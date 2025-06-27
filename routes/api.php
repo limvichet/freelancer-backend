@@ -18,8 +18,9 @@ Route::get($admin_public_path, function () {
     ]);
 });
 
+$admin_public_path = 'admin-public';//Public API
 
-Route::prefix($admin_public_path)->group(function () {
+Route::prefix('admin-public')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login',    [AuthController::class, 'login']);
 });
