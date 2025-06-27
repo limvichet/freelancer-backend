@@ -14,13 +14,14 @@ $admin_secure_path = 'admin-secure';//Secure API (Require Token)
 
 Route::get($admin_public_path, function () {
     return response()->json([
-        'message' => 'Hello from Laravel API!'
+        "Api welocme to laravel"
     ]);
 });
 
 $admin_public_path = 'admin-public';//Public API
 
 Route::prefix('admin-public')->group(function () {
+
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login',    [AuthController::class, 'login']);
 });
