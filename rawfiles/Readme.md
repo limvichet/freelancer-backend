@@ -21,3 +21,6 @@ $ npm install
 
 $ npm run dev
 $ composer run dev
+
+## install laravel sanctum 
+$ php artisan install:api
