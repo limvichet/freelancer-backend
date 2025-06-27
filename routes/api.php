@@ -5,28 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\UserController;
 
-$admin_public_path = 'admin-public';//Public API
-$admin_secure_path = 'admin-secure';//Secure API (Require Token)
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:sanctum');
 
-Route::get($admin_public_path, function () {
-    return response()->json([
-        "Api welocme to laravel"
-    ]);
-});
-
-$admin_public_path = 'admin-public';//Public API
 
 Route::prefix('admin-public')->group(function () {
-
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login',    [AuthController::class, 'login']);
 });
 
-Route::prefix($admin_secure_path)->middleware('auth:sanctum')->group(function () {
+Route::prefix('admin-secure')->middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [UserController::class, 'profile']);
 });
