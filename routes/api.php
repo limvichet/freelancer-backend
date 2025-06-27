@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\UserController;
 
-$admin_public_path = '/adminpublic';//Public API
-$admin_secure_path = '/adminsecure';//Secure API (Require Token)
+$admin_public_path = 'admin-public';//Public API
+$admin_secure_path = 'admin-secure';//Secure API (Require Token)
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
