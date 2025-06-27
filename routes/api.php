@@ -12,7 +12,7 @@ $admin_secure_path = '/adminsecure';//Secure API (Require Token)
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::get($admin_public_path . '/api', function () {
+Route::get($admin_public_path, function () {
     return response()->json([
         'message' => 'Hello from Laravel API!'
     ]);
