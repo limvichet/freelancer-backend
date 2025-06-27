@@ -5,14 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Admin\AuthController;
 use App\Http\Controllers\Api\Admin\UserController;
 
-$admin_public_path = '/admin-public';//Public API
-$admin_secure_path = '/admin-secure';//Secure API (Require Token)
+$admin_public_path = '/adminpublic';//Public API
+$admin_secure_path = '/adminsecure';//Secure API (Require Token)
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::get('/api', function () {
+Route::get($admin_public_path . '/api', function () {
     return response()->json([
         'message' => 'Hello from Laravel API!'
     ]);
