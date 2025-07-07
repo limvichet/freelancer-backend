@@ -24,3 +24,6 @@ $ composer run dev
 
 ## install laravel sanctum 
 $ php artisan install:api
+
+## check api route list
+$ php artisan route:list --path=api
