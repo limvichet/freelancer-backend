@@ -2,125 +2,111 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
-use App\Models\Commune;
-use App\Models\Village;
-use App\Models\District;
 use App\Models\Location;
-use App\Models\Province;
-use App\Models\Religion;
-use App\Models\LocationType;
 use Illuminate\Http\Request;
-use App\Models\LocationLevel;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\LocationResource;
 
 class LocationController extends Controller
 {
-    public function getProvinces(Request $request)
+    public function index()
     {
-        $data = Province::active()->select('pro_code as id', 'name_kh as value')->orderBy('pro_code', 'asc')->get();
-        $response = [
-            'data' => $data,
-            'code'  => config('constants.codes.success'),
-            'message' => config('constants.messages_en.request_success')
-        ];
-        return response($response, 200);
+        return LocationResource::collection(Location::all());
     }
 
-    public function getDistricts(Request $request)
+    public function store(Request $request)
     {
-        $pro_code = $request->pro_code;
-        $data = District::
-            when($pro_code <> '', function($query) use ($pro_code) {
-                $query->where('pro_code', $pro_code);
-            })
-            ->where('active', 1)->select('dis_code as id', 'name_kh as value')->orderBy('dis_code', 'asc')
-            ->get();
-        $response = [
-            'data' => $data,
-            'code'  => config('constants.codes.success'),
-            'message' => config('constants.messages.request_success')
-        ];
-        return response($response, 200);
+        try {
+            $request->validate([
+                'location_code' => 'required|string|max:11|unique:sys_locations,location_code',
+                // Add other fields and rules if needed
+            ], [
+                'location_code.required' => 'លេខកូដទីតាំងត្រូវបានទាមទារ',
+                'location_code.unique' => 'លេខកូដទីតាំងនេះមានរួចហើយ សូមប្រើមួយផ្សេងទៀត',
+            ]);
+
+            $location = Location::create($request->all());
+
+            return new LocationResource($location);
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'message' => 'បញ្ហាក្នុងការផ្ទៀងផ្ទាត់ទិន្នន័យ',
+                'errors' => $e->errors(),
+            ], 422);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'មានបញ្ហាផ្ទៃក្នុងម៉ាស៊ីនមេ',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
-    public function getCommunes(Request $request)
+
+    public function show($location_code)
     {
-        $dis_code = $request->dis_code;
-        $data = Commune::
-            when($dis_code <> '', function($query) use ($dis_code) {
-                $query->where('dis_code', $dis_code);
-            })->where('active', 1)->select('com_code as id', 'name_kh as value')->orderBy('com_code', 'asc')->get();
-        $response = [
-            'data' => $data,
-            'code'  => config('constants.codes.success'),
-            'message' => config('constants.messages.request_success')
-        ];
-        return response($response, 200);
+        try {
+            $location = Location::findOrFail($location_code);
+            return new LocationResource($location);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'message' => 'មិនមានទិន្នន័យដែលអ្នកស្នើសុំពីនេះទេ',
+            ], 404);
+        }
     }
 
-    public function getVillages(Request $request)
+    public function update(Request $request, $location_code)
     {
-        $com_code = $request->com_code;
-        $data = Village::
-            when($com_code <> '', function($query) use ($com_code) {
-                $query->where('com_code', $com_code);
-            })->where('active', 1)->select('vil_code as id', 'name_kh as value')->orderBy('vil_code', 'asc')->get();
-        $response = [
-            'data' => $data,
-            'code'  => config('constants.codes.success'),
-            'message' => config('constants.messages.request_success')
-        ];
-        return response($response, 200);
+        try {
+            $location = Location::where('location_code', $location_code)->firstOrFail();
+
+            $request->validate([
+                'location_code' => [
+                    'required',
+                    'string',
+                    'max:11',
+                    Rule::unique('sys_locations', 'location_code')->ignore($location->location_code, 'location_code'),
+                ],
+                // Add other validation rules if needed
+            ], [
+                'location_code.required' => 'លេខកូដទីតាំងត្រូវបានទាមទារ',
+                'location_code.unique' => 'លេខកូដទីតាំងនេះមានរួចហើយ សូមប្រើមួយផ្សេងទៀត',
+            ]);
+
+            $location->update($request->all());
+
+            return new LocationResource($location);
+
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'message' => 'មិនមានទិន្នន័យដែលអ្នកចង់កែប្រែទេ'
+            ], 404);
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'message' => 'បញ្ហាក្នុងការផ្ទៀងផ្ទាត់ទិន្នន័យ',
+                'errors' => $e->errors(),
+            ], 422);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'មានបញ្ហាផ្ទៃក្នុងម៉ាស៊ីនមេ',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
-    public function getLocations(Request $request)
-    {
-        $pro_code = $request->pro_code;
-        $data = Location::
-            when($pro_code <> '', function($query) use ($pro_code) {
-                $query->where('pro_code', $pro_code);
-            })
-            ->where('active', 1)->select('location_code as id', 'location_kh as value')->orderBy('location_code', 'asc')
-            ->get();
-        $response = [
-            'data' => $data,
-            'code'  => config('constants.codes.success'),
-            'message' => config('constants.messages.request_success')
-        ];
-        return response($response, 200);
-    }
 
-    public function getLocationTypes(Request $request)
+    public function destroy($location_code)
     {
-        $data = LocationType::select('location_type_id as id', 'location_type_kh as value')->orderBy('location_type_id', 'asc')->get();
-        $response = [
-            'data' => $data,
-            'code'  => config('constants.codes.success'),
-            'message' => config('constants.messages.request_success')
-        ];
-        return response($response, 200);
-    }
+        $location = Location::findOrFail($location_code);
+        $location->delete();
 
-    public function getLocationRegions(Request $request)
-    {
-        $data = Religion::select('region_id as id', 'region_kh as value')->orderBy('region_id', 'asc')->get();
-        $response = [
-            'data' => $data,
-            'code'  => config('constants.codes.success'),
-            'message' => config('constants.messages.request_success')
-        ];
-        return response($response, 200);
-    }
-
-    public function getLocationLevels(Request $request)
-    {
-        $data = LocationLevel::select('edu_level_id as id', 'edu_level_kh as value')->orderBy('edu_level_id', 'asc')->get();
-        $response = [
-            'data' => $data,
-            'code'  => config('constants.codes.success'),
-            'message' => config('constants.messages.request_success')
-        ];
-        return response($response, 200);
+        return response()->json([
+            'message' => 'លុបទិន្នន័យបានជោគជ័យ'
+        ], 200); // or 204 with null
     }
 
 }

@@ -10,18 +10,16 @@ class Location extends Model
     use HasFactory;
 
     protected $table = 'sys_locations';
-
     protected $primaryKey = 'location_code';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
-    // protected $fillable = [
-    // 	'location_code', 'emis_code', 'pro_code', 'dis_code', 'com_code', 'vil_code',
-    // 	'location_kh', 'location_en', 'location_his', 'region_id', 'location_type_id',
-    //     'equal_gd', 'location_province', 'sub_location', 'parent_location_code',
-    // 	'prokah', 'prokah_num', 'library', 'resource_center', 'building_num',
-    // 	'distance_to_poe', 'multi_level_edu', 'technical_school',
-    //     'school_annex', 'main_school', 'disadvantage', 'temporary_code', 'ref_doc',
-    //     'created_by', 'updated_by','schoolclaster',
-    // ];
+    protected $fillable = [
+        'location_type_id', 'pro_code', 'dis_code', 'com_code', 'vil_code', 'location_code',
+        'location_kh', 'schoolclaster', 'school_annex', 'main_school', 'region_id',
+        'multi_level_edu', 'disadvantage', 'location_history',
+        'created_by', 'updated_by', 'active',
+    ];
 
     public $casts = [
         'location_code' => 'string',
