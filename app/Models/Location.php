@@ -16,7 +16,7 @@ class Location extends Model
 
     protected $fillable = [
         'location_type_id', 'pro_code', 'dis_code', 'com_code', 'vil_code', 'location_code',
-        'location_kh', 'schoolclaster', 'school_annex', 'main_school', 'region_id',
+        'location_kh', 'temporary_code', 'emis_code', 'schoolclaster', 'school_annex', 'main_school', 'region_id',
         'multi_level_edu', 'disadvantage', 'location_history',
         'created_by', 'updated_by', 'active',
     ];
