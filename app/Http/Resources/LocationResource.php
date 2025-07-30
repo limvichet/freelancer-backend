@@ -15,6 +15,8 @@ class LocationResource extends JsonResource
             'com_code' => $this->com_code,
             'vil_code' => $this->vil_code,
             'location_code' => $this->location_code,
+            'temporary_code' => $this->temporary_code,
+            'emis_code' => $this->emis_code,
             'location_kh' => $this->location_kh,
             'schoolclaster' => $this->schoolclaster,
             'school_annex' => $this->school_annex,
