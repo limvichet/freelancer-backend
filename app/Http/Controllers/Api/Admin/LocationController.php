@@ -12,7 +12,37 @@ class LocationController extends Controller
 {
     public function index()
     {
-        return LocationResource::collection(Location::all());
+        $locations = Location::
+                        when(request()->pro_code, function($q) {
+                            $q->where('pro_code',request()->pro_code)
+                            ->orderBy('location_kh', 'asc');;
+                        })
+                        ->when(request()->dis_code, function($q) {
+                            $q->where('dis_code',request()->dis_code)
+                            ->orderBy('location_kh', 'asc');;
+                        })
+                        ->when(request()->com_code, function($q) {
+                            $q->where('com_code',request()->com_code)
+                            ->orderBy('location_kh', 'asc');
+                        })
+                        ->when(request()->vil_code, function($q) {
+                            $q->where('vil_code',request()->vil_code)
+                            ->orderBy('location_kh', 'asc');
+                        })
+                        ->when(request()->location_type_id, function($q) {
+                            $q->where('location_type_id', request()->location_type_id)
+                            ->orderBy('location_kh', 'asc');;
+                        })
+                        ->when(request()->name, function($q) {
+                            $q->where(function($q) {
+                                $q->Where('location_kh', 'LIKE', '%'.request()->name.'%')
+                                ->orWhere('location_code', 'LIKE', '%'.request()->name.'%')
+                                ->orderBy('location_kh', 'asc');
+                            });
+                        })
+                        ->orderBy('location_kh', 'asc')
+                        ->paginate(20);
+        return LocationResource::collection(resource: $locations);
     }
 
     public function store(Request $request)
