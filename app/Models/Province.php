@@ -11,11 +11,21 @@ class Province extends Model
 
     protected $primaryKey = 'pro_code';
 
-    public $incrementing = false;
-    
-    public $timestamps = false;
+    protected $fillable = [
+        'pro_code',
+        'name_en',
+        'name_kh',
+        'reference',
+        'active',
+        'created_at',
+        'updated_at',
+        'created_by',
+        'updated_by',
+    ];
 
-    protected $fillable = ['pro_code', 'name_kh', 'name_en', 'active'];
+    public $casts = [
+        'pro_code' => 'string',
+    ];
 
     /**
      * Get the districts

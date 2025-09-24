@@ -27,3 +27,18 @@ $ php artisan install:api
 
 ## check api route list
 $ php artisan route:list --path=api
+
+
+### to verify email
+
+php artisan config:clear
+php artisan route:clear
+
+php artisan serve --host=127.0.0.1 --port=8000 --https
+
+
+
+# Clear the old boostrap/cache/compiled.php
+php artisan clear-compiled
+# Recreate boostrap/cache/compiled.php
+php artisan optimize

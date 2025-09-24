@@ -12,8 +12,13 @@ class District extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    protected $fillable = array('dis_code', 'pro_code', 'name_en', 'name_kh', 'note', 'active');
+    protected $fillable = array('dis_code', 'pro_code', 'name_en', 'name_kh', 'reference', 'active');
     
+
+    public $casts = [
+        'dis_code' => 'string',
+    ];
+
     /**
      * Get the province
      */

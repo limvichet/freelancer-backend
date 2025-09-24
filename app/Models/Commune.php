@@ -17,8 +17,13 @@ class Commune extends Model
     const CREATED_AT = 'create_time';
     const UPDATED_AT = 'update_time';
 
-    protected $fillable = ['com_code', 'dis_code', 'name_en', 'name_kh', 'note', 'active'];
+    protected $fillable = ['com_code', 'dis_code', 'name_en', 'name_kh', 'reference', 'active'];
 
+    
+    public $casts = [
+        'com_code' => 'string',
+    ];
+    
     /**
      * Get the district
      */

@@ -98,6 +98,7 @@ class LocationController extends Controller
                     'string',
                     'max:11',
                     Rule::unique('sys_locations', 'location_code')->ignore($location->location_code, 'location_code'),
+                    
                 ],
                 // Add other validation rules if needed
             ], [
