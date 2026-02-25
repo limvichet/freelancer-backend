@@ -9,6 +9,7 @@ use App\Models\Position;
 use App\Models\Professional;
 use App\Models\ProfessionalType;
 use App\Models\Qualification;
+use App\Models\SalaryLevel;
 use App\Models\StaffStatus;
 use App\Models\Subject;
 
@@ -38,7 +39,7 @@ class GetStaffController extends Controller
 
     public function getSubjects(Request $request)
     {
-        $data = Subject::active()->select('subject_id as id', 'subject_kh as value')->orderBy('subject_hierarchy', 'asc')->get();
+        $data = Subject::active()->select('subject_id as id', 'subject_kh as value')->orderBy('subject_id', 'asc')->get();
         $response = [
             'data' => $data,
             'code'  => config('constants.codes.success'),
@@ -83,6 +84,17 @@ class GetStaffController extends Controller
     public function getStatus(Request $request)
     {
         $data = StaffStatus::active()->select('status_id as id', 'status_kh as value')->orderBy('status_id', 'asc')->get();
+        $response = [
+            'data' => $data,
+            'code'  => config('constants.codes.success'),
+            'message' => config('constants.messages_en.request_success')
+        ];
+        return response($response, 200);
+    }
+
+    public function getSalaryLevels(Request $request)
+    {
+        $data = SalaryLevel::active()->select('salary_level_id as id', 'salary_level_kh as value')->orderBy('salary_level_id', 'asc')->get();
         $response = [
             'data' => $data,
             'code'  => config('constants.codes.success'),

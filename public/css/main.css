@@ -1,0 +1,10 @@
+:root{
+    /* font name */
+    --kh-Kantumruy: 'Kantumruy';
+    --kh-moul: 'KhmerOSmuollight';
+    --en-robotos: 'Robotos';
+}
+
+body{
+    font-family: var(--kh-Kantumruy), var(--en-robotos);
+}

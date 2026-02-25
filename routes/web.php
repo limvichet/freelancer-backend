@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\RateLimiter;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Auth::routes();
@@ -16,7 +16,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
+// Route::group(['prefix' => '{locale}'], function () {
+//     // Admin Dashboad
+//     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// });
 
 
 

@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    
+
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'admin_users';
@@ -20,6 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'location_code',
     ];
 
 
@@ -33,6 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'location_code' => 'string',
         ];
     }
 }

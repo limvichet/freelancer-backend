@@ -42,7 +42,7 @@ class LocationController extends Controller
                         })
                         ->orderBy('location_kh', 'asc')
                         ->paginate(20);
-        return LocationResource::collection(resource: $locations);
+        return LocationResource::collection($locations);
     }
 
     public function store(Request $request)
@@ -57,7 +57,6 @@ class LocationController extends Controller
             ]);
 
             $location = Location::create($request->all());
-
             return new LocationResource($location);
 
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -98,7 +97,7 @@ class LocationController extends Controller
                     'string',
                     'max:11',
                     Rule::unique('sys_locations', 'location_code')->ignore($location->location_code, 'location_code'),
-                    
+
                 ],
                 // Add other validation rules if needed
             ], [

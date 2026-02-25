@@ -1,0 +1,57 @@
+/* Default expanded sidebar */
+.left_col {
+  width: 230px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: width 0.4s ease, opacity 0.4s ease;
+  overflow: hidden;
+  background: #fff !important;
+}
+
+
+.nav.side-menu > li a {
+  color: #394553;
+}
+
+.nav.side-menu > li.active,
+.nav.side-menu > li > a:hover {
+  background: #a6a0a0;
+}
+
+.nav.side-menu > li > a {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav.side-menu i.fa {
+  margin-right: 10px;
+  color: #f0ad4e;
+}
+
+/* Collapsed sidebar (show icons only) */
+.left_col.hide-menu {
+  width: 70px;     /* keep icons visible */
+  opacity: 1;      /* don't fade icons */
+  transform: translateX(0); /* no slide out */
+}
+
+/* Text inside menu */
+.left_col .nav.side-menu li a span {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+/* Hide text when collapsed */
+.left_col.hide-menu .nav.side-menu li a span {
+  opacity: 0;
+}
+.right_col {
+  margin-left: 230px;
+  transition: margin-left 0.4s ease;
+}
+
+.right_col.full-width {
+  margin-left: 70px; /* matches mini sidebar */
+}
+
+

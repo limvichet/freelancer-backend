@@ -15,7 +15,7 @@ class Location extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
-        'location_type_id', 'pro_code', 'dis_code', 'com_code', 'vil_code', 'location_code',
+        'location_type_id','edu_level_id', 'pro_code', 'dis_code', 'com_code', 'vil_code', 'location_code',
         'location_kh', 'temporary_code', 'emis_code', 'schoolclaster', 'school_annex', 'main_school', 'region_id',
         'multi_level_edu', 'disadvantage', 'location_history',
         'created_by', 'updated_by', 'active',
@@ -97,7 +97,7 @@ class Location extends Model
     {
         return $this->location_kh . (!is_null($this->commune) ? ' - ឃុំ/សង្កាត់៖'.$this->commune->name_kh : '');
     }
-    
+
     public function getLocationProvinceAttribute()
     {
         return $this->location_kh . (!is_null($this->province) ? ' - ខេត្ត៖' . $this->province->name_kh : '');

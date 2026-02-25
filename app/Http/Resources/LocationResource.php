@@ -10,6 +10,7 @@ class LocationResource extends JsonResource
     {
         return [
             'location_type_id' => $this->location_type_id,
+            'edu_level_id' => $this->edu_level_id,
             'pro_code' => $this->pro_code,
             'dis_code' => $this->dis_code,
             'com_code' => $this->com_code,

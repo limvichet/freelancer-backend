@@ -1,0 +1,20 @@
+
+@font-face{
+    src: url('../fonts/KhmerOSmuollight.ttf');
+    font-family: "KhmerOSmuollight";
+}
+
+@font-face{
+    src: url('../fonts/Kantumruy/KantumruyPro-Regular.ttf');
+    font-family: "Kantumruy";
+}
+
+@font-face{
+    src: url('../fonts/TACTENG.ttf');
+    font-family: "tacteing";
+}
+
+@font-face{
+    src: url('../fonts/robotos/Roboto-Regular.ttf');
+    font-family: "Robotos";
+}

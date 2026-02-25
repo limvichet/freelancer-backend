@@ -1,277 +1,1563 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-
-        <!-- Styles / Scripts -->
-        {{-- @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @else --}}
-            <style>
-                /*! tailwindcss v4.0.7 | MIT License | https://tailwindcss.com */@layer theme{:root,:host{--font-sans:'Instrument Sans',ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-serif:ui-serif,Georgia,Cambria,"Times New Roman",Times,serif;--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--color-red-50:oklch(.971 .013 17.38);--color-red-100:oklch(.936 .032 17.717);--color-red-200:oklch(.885 .062 18.334);--color-red-300:oklch(.808 .114 19.571);--color-red-400:oklch(.704 .191 22.216);--color-red-500:oklch(.637 .237 25.331);--color-red-600:oklch(.577 .245 27.325);--color-red-700:oklch(.505 .213 27.518);--color-red-800:oklch(.444 .177 26.899);--color-red-900:oklch(.396 .141 25.723);--color-red-950:oklch(.258 .092 26.042);--color-orange-50:oklch(.98 .016 73.684);--color-orange-100:oklch(.954 .038 75.164);--color-orange-200:oklch(.901 .076 70.697);--color-orange-300:oklch(.837 .128 66.29);--color-orange-400:oklch(.75 .183 55.934);--color-orange-500:oklch(.705 .213 47.604);--color-orange-600:oklch(.646 .222 41.116);--color-orange-700:oklch(.553 .195 38.402);--color-orange-800:oklch(.47 .157 37.304);--color-orange-900:oklch(.408 .123 38.172);--color-orange-950:oklch(.266 .079 36.259);--color-amber-50:oklch(.987 .022 95.277);--color-amber-100:oklch(.962 .059 95.617);--color-amber-200:oklch(.924 .12 95.746);--color-amber-300:oklch(.879 .169 91.605);--color-amber-400:oklch(.828 .189 84.429);--color-amber-500:oklch(.769 .188 70.08);--color-amber-600:oklch(.666 .179 58.318);--color-amber-700:oklch(.555 .163 48.998);--color-amber-800:oklch(.473 .137 46.201);--color-amber-900:oklch(.414 .112 45.904);--color-amber-950:oklch(.279 .077 45.635);--color-yellow-50:oklch(.987 .026 102.212);--color-yellow-100:oklch(.973 .071 103.193);--color-yellow-200:oklch(.945 .129 101.54);--color-yellow-300:oklch(.905 .182 98.111);--color-yellow-400:oklch(.852 .199 91.936);--color-yellow-500:oklch(.795 .184 86.047);--color-yellow-600:oklch(.681 .162 75.834);--color-yellow-700:oklch(.554 .135 66.442);--color-yellow-800:oklch(.476 .114 61.907);--color-yellow-900:oklch(.421 .095 57.708);--color-yellow-950:oklch(.286 .066 53.813);--color-lime-50:oklch(.986 .031 120.757);--color-lime-100:oklch(.967 .067 122.328);--color-lime-200:oklch(.938 .127 124.321);--color-lime-300:oklch(.897 .196 126.665);--color-lime-400:oklch(.841 .238 128.85);--color-lime-500:oklch(.768 .233 130.85);--color-lime-600:oklch(.648 .2 131.684);--color-lime-700:oklch(.532 .157 131.589);--color-lime-800:oklch(.453 .124 130.933);--color-lime-900:oklch(.405 .101 131.063);--color-lime-950:oklch(.274 .072 132.109);--color-green-50:oklch(.982 .018 155.826);--color-green-100:oklch(.962 .044 156.743);--color-green-200:oklch(.925 .084 155.995);--color-green-300:oklch(.871 .15 154.449);--color-green-400:oklch(.792 .209 151.711);--color-green-500:oklch(.723 .219 149.579);--color-green-600:oklch(.627 .194 149.214);--color-green-700:oklch(.527 .154 150.069);--color-green-800:oklch(.448 .119 151.328);--color-green-900:oklch(.393 .095 152.535);--color-green-950:oklch(.266 .065 152.934);--color-emerald-50:oklch(.979 .021 166.113);--color-emerald-100:oklch(.95 .052 163.051);--color-emerald-200:oklch(.905 .093 164.15);--color-emerald-300:oklch(.845 .143 164.978);--color-emerald-400:oklch(.765 .177 163.223);--color-emerald-500:oklch(.696 .17 162.48);--color-emerald-600:oklch(.596 .145 163.225);--color-emerald-700:oklch(.508 .118 165.612);--color-emerald-800:oklch(.432 .095 166.913);--color-emerald-900:oklch(.378 .077 168.94);--color-emerald-950:oklch(.262 .051 172.552);--color-teal-50:oklch(.984 .014 180.72);--color-teal-100:oklch(.953 .051 180.801);--color-teal-200:oklch(.91 .096 180.426);--color-teal-300:oklch(.855 .138 181.071);--color-teal-400:oklch(.777 .152 181.912);--color-teal-500:oklch(.704 .14 182.503);--color-teal-600:oklch(.6 .118 184.704);--color-teal-700:oklch(.511 .096 186.391);--color-teal-800:oklch(.437 .078 188.216);--color-teal-900:oklch(.386 .063 188.416);--color-teal-950:oklch(.277 .046 192.524);--color-cyan-50:oklch(.984 .019 200.873);--color-cyan-100:oklch(.956 .045 203.388);--color-cyan-200:oklch(.917 .08 205.041);--color-cyan-300:oklch(.865 .127 207.078);--color-cyan-400:oklch(.789 .154 211.53);--color-cyan-500:oklch(.715 .143 215.221);--color-cyan-600:oklch(.609 .126 221.723);--color-cyan-700:oklch(.52 .105 223.128);--color-cyan-800:oklch(.45 .085 224.283);--color-cyan-900:oklch(.398 .07 227.392);--color-cyan-950:oklch(.302 .056 229.695);--color-sky-50:oklch(.977 .013 236.62);--color-sky-100:oklch(.951 .026 236.824);--color-sky-200:oklch(.901 .058 230.902);--color-sky-300:oklch(.828 .111 230.318);--color-sky-400:oklch(.746 .16 232.661);--color-sky-500:oklch(.685 .169 237.323);--color-sky-600:oklch(.588 .158 241.966);--color-sky-700:oklch(.5 .134 242.749);--color-sky-800:oklch(.443 .11 240.79);--color-sky-900:oklch(.391 .09 240.876);--color-sky-950:oklch(.293 .066 243.157);--color-blue-50:oklch(.97 .014 254.604);--color-blue-100:oklch(.932 .032 255.585);--color-blue-200:oklch(.882 .059 254.128);--color-blue-300:oklch(.809 .105 251.813);--color-blue-400:oklch(.707 .165 254.624);--color-blue-500:oklch(.623 .214 259.815);--color-blue-600:oklch(.546 .245 262.881);--color-blue-700:oklch(.488 .243 264.376);--color-blue-800:oklch(.424 .199 265.638);--color-blue-900:oklch(.379 .146 265.522);--color-blue-950:oklch(.282 .091 267.935);--color-indigo-50:oklch(.962 .018 272.314);--color-indigo-100:oklch(.93 .034 272.788);--color-indigo-200:oklch(.87 .065 274.039);--color-indigo-300:oklch(.785 .115 274.713);--color-indigo-400:oklch(.673 .182 276.935);--color-indigo-500:oklch(.585 .233 277.117);--color-indigo-600:oklch(.511 .262 276.966);--color-indigo-700:oklch(.457 .24 277.023);--color-indigo-800:oklch(.398 .195 277.366);--color-indigo-900:oklch(.359 .144 278.697);--color-indigo-950:oklch(.257 .09 281.288);--color-violet-50:oklch(.969 .016 293.756);--color-violet-100:oklch(.943 .029 294.588);--color-violet-200:oklch(.894 .057 293.283);--color-violet-300:oklch(.811 .111 293.571);--color-violet-400:oklch(.702 .183 293.541);--color-violet-500:oklch(.606 .25 292.717);--color-violet-600:oklch(.541 .281 293.009);--color-violet-700:oklch(.491 .27 292.581);--color-violet-800:oklch(.432 .232 292.759);--color-violet-900:oklch(.38 .189 293.745);--color-violet-950:oklch(.283 .141 291.089);--color-purple-50:oklch(.977 .014 308.299);--color-purple-100:oklch(.946 .033 307.174);--color-purple-200:oklch(.902 .063 306.703);--color-purple-300:oklch(.827 .119 306.383);--color-purple-400:oklch(.714 .203 305.504);--color-purple-500:oklch(.627 .265 303.9);--color-purple-600:oklch(.558 .288 302.321);--color-purple-700:oklch(.496 .265 301.924);--color-purple-800:oklch(.438 .218 303.724);--color-purple-900:oklch(.381 .176 304.987);--color-purple-950:oklch(.291 .149 302.717);--color-fuchsia-50:oklch(.977 .017 320.058);--color-fuchsia-100:oklch(.952 .037 318.852);--color-fuchsia-200:oklch(.903 .076 319.62);--color-fuchsia-300:oklch(.833 .145 321.434);--color-fuchsia-400:oklch(.74 .238 322.16);--color-fuchsia-500:oklch(.667 .295 322.15);--color-fuchsia-600:oklch(.591 .293 322.896);--color-fuchsia-700:oklch(.518 .253 323.949);--color-fuchsia-800:oklch(.452 .211 324.591);--color-fuchsia-900:oklch(.401 .17 325.612);--color-fuchsia-950:oklch(.293 .136 325.661);--color-pink-50:oklch(.971 .014 343.198);--color-pink-100:oklch(.948 .028 342.258);--color-pink-200:oklch(.899 .061 343.231);--color-pink-300:oklch(.823 .12 346.018);--color-pink-400:oklch(.718 .202 349.761);--color-pink-500:oklch(.656 .241 354.308);--color-pink-600:oklch(.592 .249 .584);--color-pink-700:oklch(.525 .223 3.958);--color-pink-800:oklch(.459 .187 3.815);--color-pink-900:oklch(.408 .153 2.432);--color-pink-950:oklch(.284 .109 3.907);--color-rose-50:oklch(.969 .015 12.422);--color-rose-100:oklch(.941 .03 12.58);--color-rose-200:oklch(.892 .058 10.001);--color-rose-300:oklch(.81 .117 11.638);--color-rose-400:oklch(.712 .194 13.428);--color-rose-500:oklch(.645 .246 16.439);--color-rose-600:oklch(.586 .253 17.585);--color-rose-700:oklch(.514 .222 16.935);--color-rose-800:oklch(.455 .188 13.697);--color-rose-900:oklch(.41 .159 10.272);--color-rose-950:oklch(.271 .105 12.094);--color-slate-50:oklch(.984 .003 247.858);--color-slate-100:oklch(.968 .007 247.896);--color-slate-200:oklch(.929 .013 255.508);--color-slate-300:oklch(.869 .022 252.894);--color-slate-400:oklch(.704 .04 256.788);--color-slate-500:oklch(.554 .046 257.417);--color-slate-600:oklch(.446 .043 257.281);--color-slate-700:oklch(.372 .044 257.287);--color-slate-800:oklch(.279 .041 260.031);--color-slate-900:oklch(.208 .042 265.755);--color-slate-950:oklch(.129 .042 264.695);--color-gray-50:oklch(.985 .002 247.839);--color-gray-100:oklch(.967 .003 264.542);--color-gray-200:oklch(.928 .006 264.531);--color-gray-300:oklch(.872 .01 258.338);--color-gray-400:oklch(.707 .022 261.325);--color-gray-500:oklch(.551 .027 264.364);--color-gray-600:oklch(.446 .03 256.802);--color-gray-700:oklch(.373 .034 259.733);--color-gray-800:oklch(.278 .033 256.848);--color-gray-900:oklch(.21 .034 264.665);--color-gray-950:oklch(.13 .028 261.692);--color-zinc-50:oklch(.985 0 0);--color-zinc-100:oklch(.967 .001 286.375);--color-zinc-200:oklch(.92 .004 286.32);--color-zinc-300:oklch(.871 .006 286.286);--color-zinc-400:oklch(.705 .015 286.067);--color-zinc-500:oklch(.552 .016 285.938);--color-zinc-600:oklch(.442 .017 285.786);--color-zinc-700:oklch(.37 .013 285.805);--color-zinc-800:oklch(.274 .006 286.033);--color-zinc-900:oklch(.21 .006 285.885);--color-zinc-950:oklch(.141 .005 285.823);--color-neutral-50:oklch(.985 0 0);--color-neutral-100:oklch(.97 0 0);--color-neutral-200:oklch(.922 0 0);--color-neutral-300:oklch(.87 0 0);--color-neutral-400:oklch(.708 0 0);--color-neutral-500:oklch(.556 0 0);--color-neutral-600:oklch(.439 0 0);--color-neutral-700:oklch(.371 0 0);--color-neutral-800:oklch(.269 0 0);--color-neutral-900:oklch(.205 0 0);--color-neutral-950:oklch(.145 0 0);--color-stone-50:oklch(.985 .001 106.423);--color-stone-100:oklch(.97 .001 106.424);--color-stone-200:oklch(.923 .003 48.717);--color-stone-300:oklch(.869 .005 56.366);--color-stone-400:oklch(.709 .01 56.259);--color-stone-500:oklch(.553 .013 58.071);--color-stone-600:oklch(.444 .011 73.639);--color-stone-700:oklch(.374 .01 67.558);--color-stone-800:oklch(.268 .007 34.298);--color-stone-900:oklch(.216 .006 56.043);--color-stone-950:oklch(.147 .004 49.25);--color-black:#000;--color-white:#fff;--spacing:.25rem;--breakpoint-sm:40rem;--breakpoint-md:48rem;--breakpoint-lg:64rem;--breakpoint-xl:80rem;--breakpoint-2xl:96rem;--container-3xs:16rem;--container-2xs:18rem;--container-xs:20rem;--container-sm:24rem;--container-md:28rem;--container-lg:32rem;--container-xl:36rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--container-5xl:64rem;--container-6xl:72rem;--container-7xl:80rem;--text-xs:.75rem;--text-xs--line-height:calc(1/.75);--text-sm:.875rem;--text-sm--line-height:calc(1.25/.875);--text-base:1rem;--text-base--line-height: 1.5 ;--text-lg:1.125rem;--text-lg--line-height:calc(1.75/1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75/1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2/1.5);--text-3xl:1.875rem;--text-3xl--line-height: 1.2 ;--text-4xl:2.25rem;--text-4xl--line-height:calc(2.5/2.25);--text-5xl:3rem;--text-5xl--line-height:1;--text-6xl:3.75rem;--text-6xl--line-height:1;--text-7xl:4.5rem;--text-7xl--line-height:1;--text-8xl:6rem;--text-8xl--line-height:1;--text-9xl:8rem;--text-9xl--line-height:1;--font-weight-thin:100;--font-weight-extralight:200;--font-weight-light:300;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--font-weight-black:900;--tracking-tighter:-.05em;--tracking-tight:-.025em;--tracking-normal:0em;--tracking-wide:.025em;--tracking-wider:.05em;--tracking-widest:.1em;--leading-tight:1.25;--leading-snug:1.375;--leading-normal:1.5;--leading-relaxed:1.625;--leading-loose:2;--radius-xs:.125rem;--radius-sm:.25rem;--radius-md:.375rem;--radius-lg:.5rem;--radius-xl:.75rem;--radius-2xl:1rem;--radius-3xl:1.5rem;--radius-4xl:2rem;--shadow-2xs:0 1px #0000000d;--shadow-xs:0 1px 2px 0 #0000000d;--shadow-sm:0 1px 3px 0 #0000001a,0 1px 2px -1px #0000001a;--shadow-md:0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a;--shadow-lg:0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a;--shadow-xl:0 20px 25px -5px #0000001a,0 8px 10px -6px #0000001a;--shadow-2xl:0 25px 50px -12px #00000040;--inset-shadow-2xs:inset 0 1px #0000000d;--inset-shadow-xs:inset 0 1px 1px #0000000d;--inset-shadow-sm:inset 0 2px 4px #0000000d;--drop-shadow-xs:0 1px 1px #0000000d;--drop-shadow-sm:0 1px 2px #00000026;--drop-shadow-md:0 3px 3px #0000001f;--drop-shadow-lg:0 4px 4px #00000026;--drop-shadow-xl:0 9px 7px #0000001a;--drop-shadow-2xl:0 25px 25px #00000026;--ease-in:cubic-bezier(.4,0,1,1);--ease-out:cubic-bezier(0,0,.2,1);--ease-in-out:cubic-bezier(.4,0,.2,1);--animate-spin:spin 1s linear infinite;--animate-ping:ping 1s cubic-bezier(0,0,.2,1)infinite;--animate-pulse:pulse 2s cubic-bezier(.4,0,.6,1)infinite;--animate-bounce:bounce 1s infinite;--blur-xs:4px;--blur-sm:8px;--blur-md:12px;--blur-lg:16px;--blur-xl:24px;--blur-2xl:40px;--blur-3xl:64px;--perspective-dramatic:100px;--perspective-near:300px;--perspective-normal:500px;--perspective-midrange:800px;--perspective-distant:1200px;--aspect-video:16/9;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4,0,.2,1);--default-font-family:var(--font-sans);--default-font-feature-settings:var(--font-sans--font-feature-settings);--default-font-variation-settings:var(--font-sans--font-variation-settings);--default-mono-font-family:var(--font-mono);--default-mono-font-feature-settings:var(--font-mono--font-feature-settings);--default-mono-font-variation-settings:var(--font-mono--font-variation-settings)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}body{line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1;color:color-mix(in oklab,currentColor 50%,transparent)}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::file-selector-button{-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.absolute{position:absolute}.relative{position:relative}.static{position:static}.inset-0{inset:calc(var(--spacing)*0)}.-mt-\[4\.9rem\]{margin-top:-4.9rem}.-mb-px{margin-bottom:-1px}.mb-1{margin-bottom:calc(var(--spacing)*1)}.mb-2{margin-bottom:calc(var(--spacing)*2)}.mb-4{margin-bottom:calc(var(--spacing)*4)}.mb-6{margin-bottom:calc(var(--spacing)*6)}.-ml-8{margin-left:calc(var(--spacing)*-8)}.flex{display:flex}.hidden{display:none}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.aspect-\[335\/376\]{aspect-ratio:335/376}.h-1{height:calc(var(--spacing)*1)}.h-1\.5{height:calc(var(--spacing)*1.5)}.h-2{height:calc(var(--spacing)*2)}.h-2\.5{height:calc(var(--spacing)*2.5)}.h-3{height:calc(var(--spacing)*3)}.h-3\.5{height:calc(var(--spacing)*3.5)}.h-14{height:calc(var(--spacing)*14)}.h-14\.5{height:calc(var(--spacing)*14.5)}.min-h-screen{min-height:100vh}.w-1{width:calc(var(--spacing)*1)}.w-1\.5{width:calc(var(--spacing)*1.5)}.w-2{width:calc(var(--spacing)*2)}.w-2\.5{width:calc(var(--spacing)*2.5)}.w-3{width:calc(var(--spacing)*3)}.w-3\.5{width:calc(var(--spacing)*3.5)}.w-\[448px\]{width:448px}.w-full{width:100%}.max-w-\[335px\]{max-width:335px}.max-w-none{max-width:none}.flex-1{flex:1}.shrink-0{flex-shrink:0}.translate-y-0{--tw-translate-y:calc(var(--spacing)*0);translate:var(--tw-translate-x)var(--tw-translate-y)}.transform{transform:var(--tw-rotate-x)var(--tw-rotate-y)var(--tw-rotate-z)var(--tw-skew-x)var(--tw-skew-y)}.flex-col{flex-direction:column}.flex-col-reverse{flex-direction:column-reverse}.items-center{align-items:center}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}.gap-3{gap:calc(var(--spacing)*3)}.gap-4{gap:calc(var(--spacing)*4)}:where(.space-x-1>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing)*1)*var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing)*1)*calc(1 - var(--tw-space-x-reverse)))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:3.40282e38px}.rounded-sm{border-radius:var(--radius-sm)}.rounded-t-lg{border-top-left-radius:var(--radius-lg);border-top-right-radius:var(--radius-lg)}.rounded-br-lg{border-bottom-right-radius:var(--radius-lg)}.rounded-bl-lg{border-bottom-left-radius:var(--radius-lg)}.border{border-style:var(--tw-border-style);border-width:1px}.border-\[\#19140035\]{border-color:#19140035}.border-\[\#e3e3e0\]{border-color:#e3e3e0}.border-black{border-color:var(--color-black)}.border-transparent{border-color:#0000}.bg-\[\#1b1b18\]{background-color:#1b1b18}.bg-\[\#FDFDFC\]{background-color:#fdfdfc}.bg-\[\#dbdbd7\]{background-color:#dbdbd7}.bg-\[\#fff2f2\]{background-color:#fff2f2}.bg-white{background-color:var(--color-white)}.p-6{padding:calc(var(--spacing)*6)}.px-5{padding-inline:calc(var(--spacing)*5)}.py-1{padding-block:calc(var(--spacing)*1)}.py-1\.5{padding-block:calc(var(--spacing)*1.5)}.py-2{padding-block:calc(var(--spacing)*2)}.pb-12{padding-bottom:calc(var(--spacing)*12)}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-\[13px\]{font-size:13px}.leading-\[20px\]{--tw-leading:20px;line-height:20px}.leading-normal{--tw-leading:var(--leading-normal);line-height:var(--leading-normal)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.text-\[\#1b1b18\]{color:#1b1b18}.text-\[\#706f6c\]{color:#706f6c}.text-\[\#F53003\],.text-\[\#f53003\]{color:#f53003}.text-white{color:var(--color-white)}.underline{text-decoration-line:underline}.underline-offset-4{text-underline-offset:4px}.opacity-100{opacity:1}.shadow-\[0px_0px_1px_0px_rgba\(0\,0\,0\,0\.03\)\,0px_1px_2px_0px_rgba\(0\,0\,0\,0\.06\)\]{--tw-shadow:0px 0px 1px 0px var(--tw-shadow-color,#00000008),0px 1px 2px 0px var(--tw-shadow-color,#0000000f);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-\[inset_0px_0px_0px_1px_rgba\(26\,26\,0\,0\.16\)\]{--tw-shadow:inset 0px 0px 0px 1px var(--tw-shadow-color,#1a1a0029);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.\!filter{filter:var(--tw-blur,)var(--tw-brightness,)var(--tw-contrast,)var(--tw-grayscale,)var(--tw-hue-rotate,)var(--tw-invert,)var(--tw-saturate,)var(--tw-sepia,)var(--tw-drop-shadow,)!important}.filter{filter:var(--tw-blur,)var(--tw-brightness,)var(--tw-contrast,)var(--tw-grayscale,)var(--tw-hue-rotate,)var(--tw-invert,)var(--tw-saturate,)var(--tw-sepia,)var(--tw-drop-shadow,)}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-opacity{transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.delay-300{transition-delay:.3s}.duration-750{--tw-duration:.75s;transition-duration:.75s}.not-has-\[nav\]\:hidden:not(:has(:is(nav))){display:none}.before\:absolute:before{content:var(--tw-content);position:absolute}.before\:top-0:before{content:var(--tw-content);top:calc(var(--spacing)*0)}.before\:top-1\/2:before{content:var(--tw-content);top:50%}.before\:bottom-0:before{content:var(--tw-content);bottom:calc(var(--spacing)*0)}.before\:bottom-1\/2:before{content:var(--tw-content);bottom:50%}.before\:left-\[0\.4rem\]:before{content:var(--tw-content);left:.4rem}.before\:border-l:before{content:var(--tw-content);border-left-style:var(--tw-border-style);border-left-width:1px}.before\:border-\[\#e3e3e0\]:before{content:var(--tw-content);border-color:#e3e3e0}@media (hover:hover){.hover\:border-\[\#1915014a\]:hover{border-color:#1915014a}.hover\:border-\[\#19140035\]:hover{border-color:#19140035}.hover\:border-black:hover{border-color:var(--color-black)}.hover\:bg-black:hover{background-color:var(--color-black)}}@media (width>=64rem){.lg\:-mt-\[6\.6rem\]{margin-top:-6.6rem}.lg\:mb-0{margin-bottom:calc(var(--spacing)*0)}.lg\:mb-6{margin-bottom:calc(var(--spacing)*6)}.lg\:-ml-px{margin-left:-1px}.lg\:ml-0{margin-left:calc(var(--spacing)*0)}.lg\:block{display:block}.lg\:aspect-auto{aspect-ratio:auto}.lg\:w-\[438px\]{width:438px}.lg\:max-w-4xl{max-width:var(--container-4xl)}.lg\:grow{flex-grow:1}.lg\:flex-row{flex-direction:row}.lg\:justify-center{justify-content:center}.lg\:rounded-t-none{border-top-left-radius:0;border-top-right-radius:0}.lg\:rounded-tl-lg{border-top-left-radius:var(--radius-lg)}.lg\:rounded-r-lg{border-top-right-radius:var(--radius-lg);border-bottom-right-radius:var(--radius-lg)}.lg\:rounded-br-none{border-bottom-right-radius:0}.lg\:p-8{padding:calc(var(--spacing)*8)}.lg\:p-20{padding:calc(var(--spacing)*20)}}@media (prefers-color-scheme:dark){.dark\:block{display:block}.dark\:hidden{display:none}.dark\:border-\[\#3E3E3A\]{border-color:#3e3e3a}.dark\:border-\[\#eeeeec\]{border-color:#eeeeec}.dark\:bg-\[\#0a0a0a\]{background-color:#0a0a0a}.dark\:bg-\[\#1D0002\]{background-color:#1d0002}.dark\:bg-\[\#3E3E3A\]{background-color:#3e3e3a}.dark\:bg-\[\#161615\]{background-color:#161615}.dark\:bg-\[\#eeeeec\]{background-color:#eeeeec}.dark\:text-\[\#1C1C1A\]{color:#1c1c1a}.dark\:text-\[\#A1A09A\]{color:#a1a09a}.dark\:text-\[\#EDEDEC\]{color:#ededec}.dark\:text-\[\#F61500\]{color:#f61500}.dark\:text-\[\#FF4433\]{color:#f43}.dark\:shadow-\[inset_0px_0px_0px_1px_\#fffaed2d\]{--tw-shadow:inset 0px 0px 0px 1px var(--tw-shadow-color,#fffaed2d);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.dark\:before\:border-\[\#3E3E3A\]:before{content:var(--tw-content);border-color:#3e3e3a}@media (hover:hover){.dark\:hover\:border-\[\#3E3E3A\]:hover{border-color:#3e3e3a}.dark\:hover\:border-\[\#62605b\]:hover{border-color:#62605b}.dark\:hover\:border-white:hover{border-color:var(--color-white)}.dark\:hover\:bg-white:hover{background-color:var(--color-white)}}}@starting-style{.starting\:translate-y-4{--tw-translate-y:calc(var(--spacing)*4);translate:var(--tw-translate-x)var(--tw-translate-y)}}@starting-style{.starting\:translate-y-6{--tw-translate-y:calc(var(--spacing)*6);translate:var(--tw-translate-x)var(--tw-translate-y)}}@starting-style{.starting\:opacity-0{opacity:0}}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes ping{75%,to{opacity:0;transform:scale(2)}}@keyframes pulse{50%{opacity:.5}}@keyframes bounce{0%,to{animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}@property --tw-rotate-x{syntax:"*";inherits:false;initial-value:rotateX(0)}@property --tw-rotate-y{syntax:"*";inherits:false;initial-value:rotateY(0)}@property --tw-rotate-z{syntax:"*";inherits:false;initial-value:rotateZ(0)}@property --tw-skew-x{syntax:"*";inherits:false;initial-value:skewX(0)}@property --tw-skew-y{syntax:"*";inherits:false;initial-value:skewY(0)}@property --tw-space-x-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-duration{syntax:"*";inherits:false}@property --tw-content{syntax:"*";inherits:false;initial-value:""}
-            </style>
-        {{-- @endif --}}
-    </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
-                    @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
-
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
-        </header>
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-1 font-medium">Let's get started</h1>
-                    <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">Laravel has an incredibly rich ecosystem. <br>We suggest starting with the following.</p>
-                    <ul class="flex flex-col mb-4 lg:mb-6">
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Read the
-                                <a href="https://laravel.com/docs" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Documentation</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Watch video tutorials at
-                                <a href="https://laracasts.com" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Laracasts</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                    </ul>
-                    <ul class="flex gap-3 text-sm leading-normal">
-                        <li>
-                            <a href="https://cloud.laravel.com" target="_blank" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
-                                Deploy now
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="bg-[#fff2f2] dark:bg-[#1D0002] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
-                    {{-- Laravel Logo --}}
-                    <svg class="w-full text-[#F53003] dark:text-[#F61500] transition-all translate-y-0 opacity-100 max-w-none duration-750 starting:opacity-0 starting:translate-y-6" viewBox="0 0 438 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.2036 -3H0V102.197H49.5189V86.7187H17.2036V-3Z" fill="currentColor" />
-                        <path d="M110.256 41.6337C108.061 38.1275 104.945 35.3731 100.905 33.3681C96.8667 31.3647 92.8016 30.3618 88.7131 30.3618C83.4247 30.3618 78.5885 31.3389 74.201 33.2923C69.8111 35.2456 66.0474 37.928 62.9059 41.3333C59.7643 44.7401 57.3198 48.6726 55.5754 53.1293C53.8287 57.589 52.9572 62.274 52.9572 67.1813C52.9572 72.1925 53.8287 76.8995 55.5754 81.3069C57.3191 85.7173 59.7636 89.6241 62.9059 93.0293C66.0474 96.4361 69.8119 99.1155 74.201 101.069C78.5885 103.022 83.4247 103.999 88.7131 103.999C92.8016 103.999 96.8667 102.997 100.905 100.994C104.945 98.9911 108.061 96.2359 110.256 92.7282V102.195H126.563V32.1642H110.256V41.6337ZM108.76 75.7472C107.762 78.4531 106.366 80.8078 104.572 82.8112C102.776 84.8161 100.606 86.4183 98.0637 87.6206C95.5202 88.823 92.7004 89.4238 89.6103 89.4238C86.5178 89.4238 83.7252 88.823 81.2324 87.6206C78.7388 86.4183 76.5949 84.8161 74.7998 82.8112C73.004 80.8078 71.6319 78.4531 70.6856 75.7472C69.7356 73.0421 69.2644 70.1868 69.2644 67.1821C69.2644 64.1758 69.7356 61.3205 70.6856 58.6154C71.6319 55.9102 73.004 53.5571 74.7998 51.5522C76.5949 49.5495 78.738 47.9451 81.2324 46.7427C83.7252 45.5404 86.5178 44.9396 89.6103 44.9396C92.7012 44.9396 95.5202 45.5404 98.0637 46.7427C100.606 47.9451 102.776 49.5487 104.572 51.5522C106.367 53.5571 107.762 55.9102 108.76 58.6154C109.756 61.3205 110.256 64.1758 110.256 67.1821C110.256 70.1868 109.756 73.0421 108.76 75.7472Z" fill="currentColor" />
-                        <path d="M242.805 41.6337C240.611 38.1275 237.494 35.3731 233.455 33.3681C229.416 31.3647 225.351 30.3618 221.262 30.3618C215.974 30.3618 211.138 31.3389 206.75 33.2923C202.36 35.2456 198.597 37.928 195.455 41.3333C192.314 44.7401 189.869 48.6726 188.125 53.1293C186.378 57.589 185.507 62.274 185.507 67.1813C185.507 72.1925 186.378 76.8995 188.125 81.3069C189.868 85.7173 192.313 89.6241 195.455 93.0293C198.597 96.4361 202.361 99.1155 206.75 101.069C211.138 103.022 215.974 103.999 221.262 103.999C225.351 103.999 229.416 102.997 233.455 100.994C237.494 98.9911 240.611 96.2359 242.805 92.7282V102.195H259.112V32.1642H242.805V41.6337ZM241.31 75.7472C240.312 78.4531 238.916 80.8078 237.122 82.8112C235.326 84.8161 233.156 86.4183 230.614 87.6206C228.07 88.823 225.251 89.4238 222.16 89.4238C219.068 89.4238 216.275 88.823 213.782 87.6206C211.289 86.4183 209.145 84.8161 207.35 82.8112C205.554 80.8078 204.182 78.4531 203.236 75.7472C202.286 73.0421 201.814 70.1868 201.814 67.1821C201.814 64.1758 202.286 61.3205 203.236 58.6154C204.182 55.9102 205.554 53.5571 207.35 51.5522C209.145 49.5495 211.288 47.9451 213.782 46.7427C216.275 45.5404 219.068 44.9396 222.16 44.9396C225.251 44.9396 228.07 45.5404 230.614 46.7427C233.156 47.9451 235.326 49.5487 237.122 51.5522C238.917 53.5571 240.312 55.9102 241.31 58.6154C242.306 61.3205 242.806 64.1758 242.806 67.1821C242.805 70.1868 242.305 73.0421 241.31 75.7472Z" fill="currentColor" />
-                        <path d="M438 -3H421.694V102.197H438V-3Z" fill="currentColor" />
-                        <path d="M139.43 102.197H155.735V48.2834H183.712V32.1665H139.43V102.197Z" fill="currentColor" />
-                        <path d="M324.49 32.1665L303.995 85.794L283.498 32.1665H266.983L293.748 102.197H314.242L341.006 32.1665H324.49Z" fill="currentColor" />
-                        <path d="M376.571 30.3656C356.603 30.3656 340.797 46.8497 340.797 67.1828C340.797 89.6597 356.094 104 378.661 104C391.29 104 399.354 99.1488 409.206 88.5848L398.189 80.0226C398.183 80.031 389.874 90.9895 377.468 90.9895C363.048 90.9895 356.977 79.3111 356.977 73.269H411.075C413.917 50.1328 398.775 30.3656 376.571 30.3656ZM357.02 61.0967C357.145 59.7487 359.023 43.3761 376.442 43.3761C393.861 43.3761 395.978 59.7464 396.099 61.0967H357.02Z" fill="currentColor" />
-                    </svg>
-
-                    {{-- Light Mode 12 SVG --}}
-                    <svg class="w-[448px] max-w-none relative -mt-[4.9rem] -ml-8 lg:ml-0 lg:-mt-[6.6rem] dark:hidden" viewBox="0 0 440 376" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4">
-                            <path d="M188.263 355.73L188.595 355.73C195.441 348.845 205.766 339.761 219.569 328.477C232.93 317.193 242.978 308.205 249.714 301.511C256.34 294.626 260.867 287.358 263.296 279.708C265.725 272.058 264.565 264.121 259.816 255.896C254.516 246.716 247.062 239.352 237.454 233.805C227.957 228.067 217.908 225.198 207.307 225.198C196.927 225.197 190.136 227.97 186.934 233.516C183.621 238.872 184.726 246.331 190.247 255.894L125.647 255.891C116.371 239.825 112.395 225.481 113.72 212.858C115.265 200.235 121.559 190.481 132.602 183.596C143.754 176.52 158.607 172.982 177.159 172.983C196.594 172.984 215.863 176.523 234.968 183.6C253.961 190.486 271.299 200.241 286.98 212.864C302.661 225.488 315.14 239.833 324.416 255.899C333.03 270.817 336.841 283.918 335.847 295.203C335.075 306.487 331.376 316.336 324.75 324.751C318.346 333.167 308.408 343.494 294.936 355.734L377.094 355.737L405.917 405.656L217.087 405.649L188.263 355.73Z" fill="black" />
-                            <path d="M9.11884 226.339L-13.7396 226.338L-42.7286 176.132L43.0733 176.135L175.595 405.649L112.651 405.647L9.11884 226.339Z" fill="black" />
-                            <path d="M188.263 355.73L188.595 355.73C195.441 348.845 205.766 339.761 219.569 328.477C232.93 317.193 242.978 308.205 249.714 301.511C256.34 294.626 260.867 287.358 263.296 279.708C265.725 272.058 264.565 264.121 259.816 255.896C254.516 246.716 247.062 239.352 237.454 233.805C227.957 228.067 217.908 225.198 207.307 225.198C196.927 225.197 190.136 227.97 186.934 233.516C183.621 238.872 184.726 246.331 190.247 255.894L125.647 255.891C116.371 239.825 112.395 225.481 113.72 212.858C115.265 200.235 121.559 190.481 132.602 183.596C143.754 176.52 158.607 172.982 177.159 172.983C196.594 172.984 215.863 176.523 234.968 183.6C253.961 190.486 271.299 200.241 286.98 212.864C302.661 225.488 315.14 239.833 324.416 255.899C333.03 270.817 336.841 283.918 335.847 295.203C335.075 306.487 331.376 316.336 324.75 324.751C318.346 333.167 308.408 343.494 294.936 355.734L377.094 355.737L405.917 405.656L217.087 405.649L188.263 355.73Z" stroke="#1B1B18" stroke-width="1" />
-                            <path d="M9.11884 226.339L-13.7396 226.338L-42.7286 176.132L43.0733 176.135L175.595 405.649L112.651 405.647L9.11884 226.339Z" stroke="#1B1B18" stroke-width="1" />
-                            <path d="M204.592 327.449L204.923 327.449C211.769 320.564 222.094 311.479 235.897 300.196C249.258 288.912 259.306 279.923 266.042 273.23C272.668 266.345 277.195 259.077 279.624 251.427C282.053 243.777 280.893 235.839 276.145 227.615C270.844 218.435 263.39 211.071 253.782 205.524C244.285 199.786 234.236 196.917 223.635 196.916C213.255 196.916 206.464 199.689 203.262 205.235C199.949 210.59 201.054 218.049 206.575 227.612L141.975 227.61C132.699 211.544 128.723 197.2 130.048 184.577C131.593 171.954 137.887 162.2 148.93 155.315C160.083 148.239 174.935 144.701 193.487 144.702C212.922 144.703 232.192 148.242 251.296 155.319C270.289 162.205 287.627 171.96 303.308 184.583C318.989 197.207 331.468 211.552 340.745 227.618C349.358 242.536 353.169 255.637 352.175 266.921C351.403 278.205 347.704 288.055 341.078 296.47C334.674 304.885 324.736 315.213 311.264 327.453L393.422 327.456L422.246 377.375L233.415 377.368L204.592 327.449Z" fill="#F8B803" />
-                            <path d="M25.447 198.058L2.58852 198.057L-26.4005 147.851L59.4015 147.854L191.923 377.368L128.979 377.365L25.447 198.058Z" fill="#F8B803" />
-                            <path d="M204.592 327.449L204.923 327.449C211.769 320.564 222.094 311.479 235.897 300.196C249.258 288.912 259.306 279.923 266.042 273.23C272.668 266.345 277.195 259.077 279.624 251.427C282.053 243.777 280.893 235.839 276.145 227.615C270.844 218.435 263.39 211.071 253.782 205.524C244.285 199.786 234.236 196.917 223.635 196.916C213.255 196.916 206.464 199.689 203.262 205.235C199.949 210.59 201.054 218.049 206.575 227.612L141.975 227.61C132.699 211.544 128.723 197.2 130.048 184.577C131.593 171.954 137.887 162.2 148.93 155.315C160.083 148.239 174.935 144.701 193.487 144.702C212.922 144.703 232.192 148.242 251.296 155.319C270.289 162.205 287.627 171.96 303.308 184.583C318.989 197.207 331.468 211.552 340.745 227.618C349.358 242.536 353.169 255.637 352.175 266.921C351.403 278.205 347.704 288.055 341.078 296.47C334.674 304.885 324.736 315.213 311.264 327.453L393.422 327.456L422.246 377.375L233.415 377.368L204.592 327.449Z" stroke="#1B1B18" stroke-width="1" />
-                            <path d="M25.447 198.058L2.58852 198.057L-26.4005 147.851L59.4015 147.854L191.923 377.368L128.979 377.365L25.447 198.058Z" stroke="#1B1B18" stroke-width="1" />
-                        </g>
-                        <g style="mix-blend-mode: hard-light" class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4">
-                            <path d="M217.342 305.363L217.673 305.363C224.519 298.478 234.844 289.393 248.647 278.11C262.008 266.826 272.056 257.837 278.792 251.144C285.418 244.259 289.945 236.991 292.374 229.341C294.803 221.691 293.643 213.753 288.895 205.529C283.594 196.349 276.14 188.985 266.532 183.438C257.035 177.7 246.986 174.831 236.385 174.83C226.005 174.83 219.214 177.603 216.012 183.149C212.699 188.504 213.804 195.963 219.325 205.527L154.725 205.524C145.449 189.458 141.473 175.114 142.798 162.491C144.343 149.868 150.637 140.114 161.68 133.229C172.833 126.153 187.685 122.615 206.237 122.616C225.672 122.617 244.942 126.156 264.046 133.233C283.039 140.119 300.377 149.874 316.058 162.497C331.739 175.121 344.218 189.466 353.495 205.532C362.108 220.45 365.919 233.551 364.925 244.835C364.153 256.12 360.454 265.969 353.828 274.384C347.424 282.799 337.486 293.127 324.014 305.367L406.172 305.37L434.996 355.289L246.165 355.282L217.342 305.363Z" fill="#F0ACB8" />
-                            <path d="M38.197 175.972L15.3385 175.971L-13.6505 125.765L72.1515 125.768L204.673 355.282L141.729 355.279L38.197 175.972Z" fill="#F0ACB8" />
-                            <path d="M217.342 305.363L217.673 305.363C224.519 298.478 234.844 289.393 248.647 278.11C262.008 266.826 272.056 257.837 278.792 251.144C285.418 244.259 289.945 236.991 292.374 229.341C294.803 221.691 293.643 213.753 288.895 205.529C283.594 196.349 276.14 188.985 266.532 183.438C257.035 177.7 246.986 174.831 236.385 174.83C226.005 174.83 219.214 177.603 216.012 183.149C212.699 188.504 213.804 195.963 219.325 205.527L154.725 205.524C145.449 189.458 141.473 175.114 142.798 162.491C144.343 149.868 150.637 140.114 161.68 133.229C172.833 126.153 187.685 122.615 206.237 122.616C225.672 122.617 244.942 126.156 264.046 133.233C283.039 140.119 300.377 149.874 316.058 162.497C331.739 175.121 344.218 189.466 353.495 205.532C362.108 220.45 365.919 233.551 364.925 244.835C364.153 256.12 360.454 265.969 353.828 274.384C347.424 282.799 337.486 293.127 324.014 305.367L406.172 305.37L434.996 355.289L246.165 355.282L217.342 305.363Z" stroke="#1B1B18" stroke-width="1" />
-                            <path d="M38.197 175.972L15.3385 175.971L-13.6505 125.765L72.1515 125.768L204.673 355.282L141.729 355.279L38.197 175.972Z" stroke="#1B1B18" stroke-width="1" />
-                        </g>
-                        <g style="mix-blend-mode: plus-darker" class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4">
-                            <path d="M230.951 281.792L231.282 281.793C238.128 274.907 248.453 265.823 262.256 254.539C275.617 243.256 285.666 234.267 292.402 227.573C299.027 220.688 303.554 213.421 305.983 205.771C308.412 198.12 307.253 190.183 302.504 181.959C297.203 172.778 289.749 165.415 280.142 159.868C270.645 154.13 260.596 151.26 249.995 151.26C239.615 151.26 232.823 154.033 229.621 159.579C226.309 164.934 227.413 172.393 232.935 181.956L168.335 181.954C159.058 165.888 155.082 151.543 156.407 138.92C157.953 126.298 164.247 116.544 175.289 109.659C186.442 102.583 201.294 99.045 219.846 99.0457C239.281 99.0464 258.551 102.585 277.655 109.663C296.649 116.549 313.986 126.303 329.667 138.927C345.349 151.551 357.827 165.895 367.104 181.961C375.718 196.88 379.528 209.981 378.535 221.265C377.762 232.549 374.063 242.399 367.438 250.814C361.033 259.229 351.095 269.557 337.624 281.796L419.782 281.8L448.605 331.719L259.774 331.712L230.951 281.792Z" fill="#F3BEC7" />
-                            <path d="M51.8063 152.402L28.9479 152.401L-0.0411453 102.195L85.7608 102.198L218.282 331.711L155.339 331.709L51.8063 152.402Z" fill="#F3BEC7" />
-                            <path d="M230.951 281.792L231.282 281.793C238.128 274.907 248.453 265.823 262.256 254.539C275.617 243.256 285.666 234.267 292.402 227.573C299.027 220.688 303.554 213.421 305.983 205.771C308.412 198.12 307.253 190.183 302.504 181.959C297.203 172.778 289.749 165.415 280.142 159.868C270.645 154.13 260.596 151.26 249.995 151.26C239.615 151.26 232.823 154.033 229.621 159.579C226.309 164.934 227.413 172.393 232.935 181.956L168.335 181.954C159.058 165.888 155.082 151.543 156.407 138.92C157.953 126.298 164.247 116.544 175.289 109.659C186.442 102.583 201.294 99.045 219.846 99.0457C239.281 99.0464 258.551 102.585 277.655 109.663C296.649 116.549 313.986 126.303 329.667 138.927C345.349 151.551 357.827 165.895 367.104 181.961C375.718 196.88 379.528 209.981 378.535 221.265C377.762 232.549 374.063 242.399 367.438 250.814C361.033 259.229 351.095 269.557 337.624 281.796L419.782 281.8L448.605 331.719L259.774 331.712L230.951 281.792Z" stroke="#1B1B18" stroke-width="1" />
-                            <path d="M51.8063 152.402L28.9479 152.401L-0.0411453 102.195L85.7608 102.198L218.282 331.711L155.339 331.709L51.8063 152.402Z" stroke="#1B1B18" stroke-width="1" />
-                        </g>
-                        <g class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4">
-                            <path d="M188.467 355.363L188.798 355.363C195.644 348.478 205.969 339.393 219.772 328.11C233.133 316.826 243.181 307.837 249.917 301.144C253.696 297.217 256.792 293.166 259.205 288.991C261.024 285.845 262.455 282.628 263.499 279.341C265.928 271.691 264.768 263.753 260.02 255.529C254.719 246.349 247.265 238.985 237.657 233.438C228.16 227.7 218.111 224.831 207.51 224.83C197.13 224.83 190.339 227.603 187.137 233.149C183.824 238.504 184.929 245.963 190.45 255.527L125.851 255.524C116.574 239.458 112.598 225.114 113.923 212.491C114.615 206.836 116.261 201.756 118.859 197.253C122.061 191.704 126.709 187.03 132.805 183.229C143.958 176.153 158.81 172.615 177.362 172.616C196.797 172.617 216.067 176.156 235.171 183.233C254.164 190.119 271.502 199.874 287.183 212.497C302.864 225.121 315.343 239.466 324.62 255.532C333.233 270.45 337.044 283.551 336.05 294.835C335.46 303.459 333.16 311.245 329.151 318.194C327.915 320.337 326.515 322.4 324.953 324.384C318.549 332.799 308.611 343.127 295.139 355.367L377.297 355.37L406.121 405.289L217.29 405.282L188.467 355.363Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M9.32197 225.972L-13.5365 225.971L-42.5255 175.765L43.2765 175.768L175.798 405.282L112.854 405.279L9.32197 225.972Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M345.247 111.915C329.566 99.2919 312.229 89.5371 293.235 82.6512L235.167 183.228C254.161 190.114 271.498 199.869 287.179 212.492L345.247 111.915Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M382.686 154.964C373.41 138.898 360.931 124.553 345.25 111.93L287.182 212.506C302.863 225.13 315.342 239.475 324.618 255.541L382.686 154.964Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M293.243 82.6472C274.139 75.57 254.869 72.031 235.434 72.0303L177.366 172.607C196.801 172.608 216.071 176.147 235.175 183.224L293.243 82.6472Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M394.118 194.257C395.112 182.973 391.301 169.872 382.688 154.953L324.619 255.53C333.233 270.448 337.044 283.55 336.05 294.834L394.118 194.257Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M235.432 72.0311C216.88 72.0304 202.027 75.5681 190.875 82.6442L132.806 183.221C143.959 176.145 158.812 172.607 177.363 172.608L235.432 72.0311Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M265.59 124.25C276.191 124.251 286.24 127.12 295.737 132.858L237.669 233.435C228.172 227.697 218.123 224.828 207.522 224.827L265.59 124.25Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M295.719 132.859C305.326 138.406 312.78 145.77 318.081 154.95L260.013 255.527C254.712 246.347 247.258 238.983 237.651 233.436L295.719 132.859Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M387.218 217.608C391.227 210.66 393.527 202.874 394.117 194.25L336.049 294.827C335.459 303.451 333.159 311.237 329.15 318.185L387.218 217.608Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M245.211 132.577C248.413 127.03 255.204 124.257 265.584 124.258L207.516 224.835C197.136 224.834 190.345 227.607 187.143 233.154L245.211 132.577Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M318.094 154.945C322.842 163.17 324.002 171.107 321.573 178.757L263.505 279.334C265.934 271.684 264.774 263.746 260.026 255.522L318.094 154.945Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M176.925 96.6737C180.127 91.1249 184.776 86.4503 190.871 82.6499L132.803 183.227C126.708 187.027 122.059 191.702 118.857 197.25L176.925 96.6737Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M387.226 217.606C385.989 219.749 384.59 221.813 383.028 223.797L324.96 324.373C326.522 322.39 327.921 320.326 329.157 318.183L387.226 217.606Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M317.269 188.408C319.087 185.262 320.519 182.045 321.562 178.758L263.494 279.335C262.451 282.622 261.019 285.839 259.201 288.985L317.269 188.408Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M245.208 132.573C241.895 137.928 243 145.387 248.522 154.95L190.454 255.527C184.932 245.964 183.827 238.505 187.14 233.15L245.208 132.573Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M176.93 96.6719C174.331 101.175 172.686 106.255 171.993 111.91L113.925 212.487C114.618 206.831 116.263 201.752 118.862 197.249L176.93 96.6719Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M317.266 188.413C314.853 192.589 311.757 196.64 307.978 200.566L249.91 301.143C253.689 297.216 256.785 293.166 259.198 288.99L317.266 188.413Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M464.198 304.708L435.375 254.789L377.307 355.366L406.13 405.285L464.198 304.708Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M353.209 254.787C366.68 242.548 376.618 232.22 383.023 223.805L324.955 324.382C318.55 332.797 308.612 343.124 295.141 355.364L353.209 254.787Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M435.37 254.787L353.212 254.784L295.144 355.361L377.302 355.364L435.37 254.787Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M183.921 154.947L248.521 154.95L190.453 255.527L125.853 255.524L183.921 154.947Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M171.992 111.914C170.668 124.537 174.643 138.881 183.92 154.947L125.852 255.524C116.575 239.458 112.599 225.114 113.924 212.491L171.992 111.914Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M307.987 200.562C301.251 207.256 291.203 216.244 277.842 227.528L219.774 328.105C233.135 316.821 243.183 307.832 249.919 301.139L307.987 200.562Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M15.5469 75.1797L44.5359 125.386L-13.5321 225.963L-42.5212 175.756L15.5469 75.1797Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M277.836 227.536C264.033 238.82 253.708 247.904 246.862 254.789L188.794 355.366C195.64 348.481 205.965 339.397 219.768 328.113L277.836 227.536Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M275.358 304.706L464.189 304.713L406.12 405.29L217.29 405.283L275.358 304.706Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M44.5279 125.39L67.3864 125.39L9.31834 225.967L-13.5401 225.966L44.5279 125.39Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M101.341 75.1911L233.863 304.705L175.795 405.282L43.2733 175.768L101.341 75.1911ZM15.5431 75.19L-42.525 175.767L43.277 175.77L101.345 75.1932L15.5431 75.19Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M246.866 254.784L246.534 254.784L188.466 355.361L188.798 355.361L246.866 254.784Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M246.539 254.781L275.362 304.701L217.294 405.277L188.471 355.358L246.539 254.781Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M67.3906 125.391L170.923 304.698L112.855 405.275L9.32257 225.967L67.3906 125.391Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                            <path d="M170.921 304.699L233.865 304.701L175.797 405.278L112.853 405.276L170.921 304.699Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="bevel" />
-                        </g>
-                        <g style="mix-blend-mode: hard-light" class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4">
-                            <path d="M246.544 254.79L246.875 254.79C253.722 247.905 264.046 238.82 277.849 227.537C291.21 216.253 301.259 207.264 307.995 200.57C314.62 193.685 319.147 186.418 321.577 178.768C324.006 171.117 322.846 163.18 318.097 154.956C312.796 145.775 305.342 138.412 295.735 132.865C286.238 127.127 276.189 124.258 265.588 124.257C255.208 124.257 248.416 127.03 245.214 132.576C241.902 137.931 243.006 145.39 248.528 154.953L183.928 154.951C174.652 138.885 170.676 124.541 172 111.918C173.546 99.2946 179.84 89.5408 190.882 82.6559C202.035 75.5798 216.887 72.0421 235.439 72.0428C254.874 72.0435 274.144 75.5825 293.248 82.6598C312.242 89.5457 329.579 99.3005 345.261 111.924C360.942 124.548 373.421 138.892 382.697 154.958C391.311 169.877 395.121 182.978 394.128 194.262C393.355 205.546 389.656 215.396 383.031 223.811C376.627 232.226 366.688 242.554 353.217 254.794L435.375 254.797L464.198 304.716L275.367 304.709L246.544 254.79Z" fill="#F0ACB8" />
-                            <path d="M246.544 254.79L246.875 254.79C253.722 247.905 264.046 238.82 277.849 227.537C291.21 216.253 301.259 207.264 307.995 200.57C314.62 193.685 319.147 186.418 321.577 178.768C324.006 171.117 322.846 163.18 318.097 154.956C312.796 145.775 305.342 138.412 295.735 132.865C286.238 127.127 276.189 124.258 265.588 124.257C255.208 124.257 248.416 127.03 245.214 132.576C241.902 137.931 243.006 145.39 248.528 154.953L183.928 154.951C174.652 138.885 170.676 124.541 172 111.918C173.546 99.2946 179.84 89.5408 190.882 82.6559C202.035 75.5798 216.887 72.0421 235.439 72.0428C254.874 72.0435 274.144 75.5825 293.248 82.6598C312.242 89.5457 329.579 99.3005 345.261 111.924C360.942 124.548 373.421 138.892 382.697 154.958C391.311 169.877 395.121 182.978 394.128 194.262C393.355 205.546 389.656 215.396 383.031 223.811C376.627 232.226 366.688 242.554 353.217 254.794L435.375 254.797L464.198 304.716L275.367 304.709L246.544 254.79Z" stroke="#1B1B18" stroke-width="1" stroke-linejoin="round" />
-                        </g>
-                        <g style="mix-blend-mode: hard-light" class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4">
-                            <path d="M67.41 125.402L44.5515 125.401L15.5625 75.1953L101.364 75.1985L233.886 304.712L170.942 304.71L67.41 125.402Z" fill="#F0ACB8" />
-                            <path d="M67.41 125.402L44.5515 125.401L15.5625 75.1953L101.364 75.1985L233.886 304.712L170.942 304.71L67.41 125.402Z" stroke="#1B1B18" stroke-width="1" />
-                        </g>
-                    </svg>
-
-                    {{-- Dark Mode 12 SVG --}}
-                    <svg class="w-[448px] max-w-none relative -mt-[4.9rem] -ml-8 lg:ml-0 lg:-mt-[6.6rem] hidden dark:block" viewBox="0 0 440 376" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4">
-                            <path d="M188.263 355.73L188.595 355.73C195.441 348.845 205.766 339.761 219.569 328.477C232.93 317.193 242.978 308.205 249.714 301.511C256.34 294.626 260.867 287.358 263.296 279.708C265.725 272.058 264.565 264.121 259.816 255.896C254.516 246.716 247.062 239.352 237.454 233.805C227.957 228.067 217.908 225.198 207.307 225.198C196.927 225.197 190.136 227.97 186.934 233.516C183.621 238.872 184.726 246.331 190.247 255.894L125.647 255.891C116.371 239.825 112.395 225.481 113.72 212.858C115.265 200.235 121.559 190.481 132.602 183.596C143.754 176.52 158.607 172.982 177.159 172.983C196.594 172.984 215.863 176.523 234.968 183.6C253.961 190.486 271.299 200.241 286.98 212.864C302.661 225.488 315.14 239.833 324.416 255.899C333.03 270.817 336.841 283.918 335.847 295.203C335.075 306.487 331.376 316.336 324.75 324.751C318.346 333.167 308.408 343.494 294.936 355.734L377.094 355.737L405.917 405.656L217.087 405.649L188.263 355.73Z" fill="black"/>
-                            <path d="M9.11884 226.339L-13.7396 226.338L-42.7286 176.132L43.0733 176.135L175.595 405.649L112.651 405.647L9.11884 226.339Z" fill="black"/>
-                            <path d="M188.263 355.73L188.595 355.73C195.441 348.845 205.766 339.761 219.569 328.477C232.93 317.193 242.978 308.205 249.714 301.511C256.34 294.626 260.867 287.358 263.296 279.708C265.725 272.058 264.565 264.121 259.816 255.896C254.516 246.716 247.062 239.352 237.454 233.805C227.957 228.067 217.908 225.198 207.307 225.198C196.927 225.197 190.136 227.97 186.934 233.516C183.621 238.872 184.726 246.331 190.247 255.894L125.647 255.891C116.371 239.825 112.395 225.481 113.72 212.858C115.265 200.235 121.559 190.481 132.602 183.596C143.754 176.52 158.607 172.982 177.159 172.983C196.594 172.984 215.863 176.523 234.968 183.6C253.961 190.486 271.299 200.241 286.98 212.864C302.661 225.488 315.14 239.833 324.416 255.899C333.03 270.817 336.841 283.918 335.847 295.203C335.075 306.487 331.376 316.336 324.75 324.751C318.346 333.167 308.408 343.494 294.936 355.734L377.094 355.737L405.917 405.656L217.087 405.649L188.263 355.73Z" stroke="#FF750F" stroke-width="1"/>
-                            <path d="M9.11884 226.339L-13.7396 226.338L-42.7286 176.132L43.0733 176.135L175.595 405.649L112.651 405.647L9.11884 226.339Z" stroke="#FF750F" stroke-width="1"/>
-                            <path d="M204.592 327.449L204.923 327.449C211.769 320.564 222.094 311.479 235.897 300.196C249.258 288.912 259.306 279.923 266.042 273.23C272.668 266.345 277.195 259.077 279.624 251.427C282.053 243.777 280.893 235.839 276.145 227.615C270.844 218.435 263.39 211.071 253.782 205.524C244.285 199.786 234.236 196.917 223.635 196.916C213.255 196.916 206.464 199.689 203.262 205.235C199.949 210.59 201.054 218.049 206.575 227.612L141.975 227.61C132.699 211.544 128.723 197.2 130.048 184.577C131.593 171.954 137.887 162.2 148.93 155.315C160.083 148.239 174.935 144.701 193.487 144.702C212.922 144.703 232.192 148.242 251.296 155.319C270.289 162.205 287.627 171.96 303.308 184.583C318.989 197.207 331.468 211.552 340.745 227.618C349.358 242.536 353.169 255.637 352.175 266.921C351.403 278.205 347.704 288.055 341.078 296.47C334.674 304.885 324.736 315.213 311.264 327.453L393.422 327.456L422.246 377.375L233.415 377.368L204.592 327.449Z" fill="#391800"/>
-                            <path d="M25.447 198.058L2.58852 198.057L-26.4005 147.851L59.4015 147.854L191.923 377.368L128.979 377.365L25.447 198.058Z" fill="#391800"/>
-                            <path d="M204.592 327.449L204.923 327.449C211.769 320.564 222.094 311.479 235.897 300.196C249.258 288.912 259.306 279.923 266.042 273.23C272.668 266.345 277.195 259.077 279.624 251.427C282.053 243.777 280.893 235.839 276.145 227.615C270.844 218.435 263.39 211.071 253.782 205.524C244.285 199.786 234.236 196.917 223.635 196.916C213.255 196.916 206.464 199.689 203.262 205.235C199.949 210.59 201.054 218.049 206.575 227.612L141.975 227.61C132.699 211.544 128.723 197.2 130.048 184.577C131.593 171.954 137.887 162.2 148.93 155.315C160.083 148.239 174.935 144.701 193.487 144.702C212.922 144.703 232.192 148.242 251.296 155.319C270.289 162.205 287.627 171.96 303.308 184.583C318.989 197.207 331.468 211.552 340.745 227.618C349.358 242.536 353.169 255.637 352.175 266.921C351.403 278.205 347.704 288.055 341.078 296.47C334.674 304.885 324.736 315.213 311.264 327.453L393.422 327.456L422.246 377.375L233.415 377.368L204.592 327.449Z" stroke="#FF750F" stroke-width="1"/>
-                            <path d="M25.447 198.058L2.58852 198.057L-26.4005 147.851L59.4015 147.854L191.923 377.368L128.979 377.365L25.447 198.058Z" stroke="#FF750F" stroke-width="1"/>
-                        </g>
-                        <g class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4" style="mix-blend-mode:hard-light">
-                            <path d="M217.342 305.363L217.673 305.363C224.519 298.478 234.844 289.393 248.647 278.11C262.008 266.826 272.056 257.837 278.792 251.144C285.418 244.259 289.945 236.991 292.374 229.341C294.803 221.691 293.643 213.753 288.895 205.529C283.594 196.349 276.14 188.985 266.532 183.438C257.035 177.7 246.986 174.831 236.385 174.83C226.005 174.83 219.214 177.603 216.012 183.149C212.699 188.504 213.804 195.963 219.325 205.527L154.725 205.524C145.449 189.458 141.473 175.114 142.798 162.491C144.343 149.868 150.637 140.114 161.68 133.229C172.833 126.153 187.685 122.615 206.237 122.616C225.672 122.617 244.942 126.156 264.046 133.233C283.039 140.119 300.377 149.874 316.058 162.497C331.739 175.121 344.218 189.466 353.495 205.532C362.108 220.45 365.919 233.551 364.925 244.835C364.153 256.12 360.454 265.969 353.828 274.384C347.424 282.799 337.486 293.127 324.014 305.367L406.172 305.37L434.996 355.289L246.165 355.282L217.342 305.363Z" fill="#733000"/>
-                            <path d="M38.197 175.972L15.3385 175.971L-13.6505 125.765L72.1515 125.768L204.673 355.282L141.729 355.279L38.197 175.972Z" fill="#733000"/>
-                            <path d="M217.342 305.363L217.673 305.363C224.519 298.478 234.844 289.393 248.647 278.11C262.008 266.826 272.056 257.837 278.792 251.144C285.418 244.259 289.945 236.991 292.374 229.341C294.803 221.691 293.643 213.753 288.895 205.529C283.594 196.349 276.14 188.985 266.532 183.438C257.035 177.7 246.986 174.831 236.385 174.83C226.005 174.83 219.214 177.603 216.012 183.149C212.699 188.504 213.804 195.963 219.325 205.527L154.725 205.524C145.449 189.458 141.473 175.114 142.798 162.491C144.343 149.868 150.637 140.114 161.68 133.229C172.833 126.153 187.685 122.615 206.237 122.616C225.672 122.617 244.942 126.156 264.046 133.233C283.039 140.119 300.377 149.874 316.058 162.497C331.739 175.121 344.218 189.466 353.495 205.532C362.108 220.45 365.919 233.551 364.925 244.835C364.153 256.12 360.454 265.969 353.828 274.384C347.424 282.799 337.486 293.127 324.014 305.367L406.172 305.37L434.996 355.289L246.165 355.282L217.342 305.363Z" stroke="#FF750F" stroke-width="1"/>
-                            <path d="M38.197 175.972L15.3385 175.971L-13.6505 125.765L72.1515 125.768L204.673 355.282L141.729 355.279L38.197 175.972Z" stroke="#FF750F" stroke-width="1"/>
-                        </g>
-                        <g class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4">
-                            <path d="M217.342 305.363L217.673 305.363C224.519 298.478 234.844 289.393 248.647 278.11C262.008 266.826 272.056 257.837 278.792 251.144C285.418 244.259 289.945 236.991 292.374 229.341C294.803 221.691 293.643 213.753 288.895 205.529C283.594 196.349 276.14 188.985 266.532 183.438C257.035 177.7 246.986 174.831 236.385 174.83C226.005 174.83 219.214 177.603 216.012 183.149C212.699 188.504 213.804 195.963 219.325 205.527L154.726 205.524C145.449 189.458 141.473 175.114 142.798 162.491C144.343 149.868 150.637 140.114 161.68 133.229C172.833 126.153 187.685 122.615 206.237 122.616C225.672 122.617 244.942 126.156 264.046 133.233C283.039 140.119 300.377 149.874 316.058 162.497C331.739 175.121 344.218 189.466 353.495 205.532C362.108 220.45 365.919 233.551 364.925 244.835C364.153 256.12 360.454 265.969 353.828 274.384C347.424 282.799 337.486 293.127 324.014 305.367L406.172 305.37L434.996 355.289L246.165 355.282L217.342 305.363Z" stroke="#FF750F" stroke-width="1"/>
-                            <path d="M38.197 175.972L15.3385 175.971L-13.6505 125.765L72.1515 125.768L204.673 355.282L141.729 355.279L38.197 175.972Z" stroke="#FF750F" stroke-width="1"/>
-                        </g>
-                        <g class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4">
-                            <path d="M188.467 355.363L188.798 355.363C195.644 348.478 205.969 339.393 219.772 328.11C233.133 316.826 243.181 307.837 249.917 301.144C253.696 297.217 256.792 293.166 259.205 288.991C261.024 285.845 262.455 282.628 263.499 279.341C265.928 271.691 264.768 263.753 260.02 255.529C254.719 246.349 247.265 238.985 237.657 233.438C228.16 227.7 218.111 224.831 207.51 224.83C197.13 224.83 190.339 227.603 187.137 233.149C183.824 238.504 184.929 245.963 190.45 255.527L125.851 255.524C116.574 239.458 112.598 225.114 113.923 212.491C114.615 206.836 116.261 201.756 118.859 197.253C122.061 191.704 126.709 187.03 132.805 183.229C143.958 176.153 158.81 172.615 177.362 172.616C196.797 172.617 216.067 176.156 235.171 183.233C254.164 190.119 271.502 199.874 287.183 212.497C302.864 225.121 315.343 239.466 324.62 255.532C333.233 270.45 337.044 283.551 336.05 294.835C335.46 303.459 333.16 311.245 329.151 318.194C327.915 320.337 326.515 322.4 324.953 324.384C318.549 332.799 308.611 343.127 295.139 355.367L377.297 355.37L406.121 405.289L217.29 405.282L188.467 355.363Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M9.32197 225.972L-13.5365 225.971L-42.5255 175.765L43.2765 175.768L175.798 405.282L112.854 405.279L9.32197 225.972Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M345.247 111.915C329.566 99.2919 312.229 89.5371 293.235 82.6512L235.167 183.228C254.161 190.114 271.498 199.869 287.179 212.492L345.247 111.915Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M382.686 154.964C373.41 138.898 360.931 124.553 345.25 111.93L287.182 212.506C302.863 225.13 315.342 239.475 324.618 255.541L382.686 154.964Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M293.243 82.6472C274.139 75.57 254.869 72.031 235.434 72.0303L177.366 172.607C196.801 172.608 216.071 176.147 235.175 183.224L293.243 82.6472Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M394.118 194.257C395.112 182.973 391.301 169.872 382.688 154.953L324.619 255.53C333.233 270.448 337.044 283.55 336.05 294.834L394.118 194.257Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M235.432 72.0311C216.88 72.0304 202.027 75.5681 190.875 82.6442L132.806 183.221C143.959 176.145 158.812 172.607 177.363 172.608L235.432 72.0311Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M265.59 124.25C276.191 124.251 286.24 127.12 295.737 132.858L237.669 233.435C228.172 227.697 218.123 224.828 207.522 224.827L265.59 124.25Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M295.719 132.859C305.326 138.406 312.78 145.77 318.081 154.95L260.013 255.527C254.712 246.347 247.258 238.983 237.651 233.436L295.719 132.859Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M387.218 217.608C391.227 210.66 393.527 202.874 394.117 194.25L336.049 294.827C335.459 303.451 333.159 311.237 329.15 318.185L387.218 217.608Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M245.211 132.577C248.413 127.03 255.204 124.257 265.584 124.258L207.516 224.835C197.136 224.834 190.345 227.607 187.143 233.154L245.211 132.577Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M318.094 154.945C322.842 163.17 324.002 171.107 321.573 178.757L263.505 279.334C265.934 271.684 264.774 263.746 260.026 255.522L318.094 154.945Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M176.925 96.6737C180.127 91.1249 184.776 86.4503 190.871 82.6499L132.803 183.227C126.708 187.027 122.059 191.702 118.857 197.25L176.925 96.6737Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M387.226 217.606C385.989 219.749 384.59 221.813 383.028 223.797L324.96 324.373C326.522 322.39 327.921 320.326 329.157 318.183L387.226 217.606Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M317.269 188.408C319.087 185.262 320.519 182.045 321.562 178.758L263.494 279.335C262.451 282.622 261.019 285.839 259.201 288.985L317.269 188.408Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M245.208 132.573C241.895 137.928 243 145.387 248.522 154.95L190.454 255.527C184.932 245.964 183.827 238.505 187.14 233.15L245.208 132.573Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M176.93 96.6719C174.331 101.175 172.686 106.255 171.993 111.91L113.925 212.487C114.618 206.831 116.263 201.752 118.862 197.249L176.93 96.6719Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M317.266 188.413C314.853 192.589 311.757 196.64 307.978 200.566L249.91 301.143C253.689 297.216 256.785 293.166 259.198 288.99L317.266 188.413Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M464.198 304.708L435.375 254.789L377.307 355.366L406.13 405.285L464.198 304.708Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M353.209 254.787C366.68 242.548 376.618 232.22 383.023 223.805L324.955 324.382C318.55 332.797 308.612 343.124 295.141 355.364L353.209 254.787Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M435.37 254.787L353.212 254.784L295.144 355.361L377.302 355.364L435.37 254.787Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M183.921 154.947L248.521 154.95L190.453 255.527L125.853 255.524L183.921 154.947Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M171.992 111.914C170.668 124.537 174.643 138.881 183.92 154.947L125.852 255.524C116.575 239.458 112.599 225.114 113.924 212.491L171.992 111.914Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M307.987 200.562C301.251 207.256 291.203 216.244 277.842 227.528L219.774 328.105C233.135 316.821 243.183 307.832 249.919 301.139L307.987 200.562Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M15.5469 75.1797L44.5359 125.386L-13.5321 225.963L-42.5212 175.756L15.5469 75.1797Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M277.836 227.536C264.033 238.82 253.708 247.904 246.862 254.789L188.794 355.366C195.64 348.481 205.965 339.397 219.768 328.113L277.836 227.536Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M275.358 304.706L464.189 304.713L406.12 405.29L217.29 405.283L275.358 304.706Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M44.5279 125.39L67.3864 125.39L9.31834 225.967L-13.5401 225.966L44.5279 125.39Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M101.341 75.1911L233.863 304.705L175.795 405.282L43.2733 175.768L101.341 75.1911ZM15.5431 75.19L-42.525 175.767L43.277 175.77L101.345 75.1932L15.5431 75.19Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M246.866 254.784L246.534 254.784L188.466 355.361L188.798 355.361L246.866 254.784Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M246.539 254.781L275.362 304.701L217.294 405.277L188.471 355.358L246.539 254.781Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M67.3906 125.391L170.923 304.698L112.855 405.275L9.32257 225.967L67.3906 125.391Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                            <path d="M170.921 304.699L233.865 304.701L175.797 405.278L112.853 405.276L170.921 304.699Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="bevel"/>
-                        </g>
-                        <g class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4" style="mix-blend-mode:hard-light">
-                            <path d="M246.544 254.79L246.875 254.79C253.722 247.905 264.046 238.82 277.849 227.537C291.21 216.253 301.259 207.264 307.995 200.57C314.62 193.685 319.147 186.418 321.577 178.768C324.006 171.117 322.846 163.18 318.097 154.956C312.796 145.775 305.342 138.412 295.735 132.865C286.238 127.127 276.189 124.258 265.588 124.257C255.208 124.257 248.416 127.03 245.214 132.576C241.902 137.931 243.006 145.39 248.528 154.953L183.928 154.951C174.652 138.885 170.676 124.541 172 111.918C173.546 99.2946 179.84 89.5408 190.882 82.6559C202.035 75.5798 216.887 72.0421 235.439 72.0428C254.874 72.0435 274.144 75.5825 293.248 82.6598C312.242 89.5457 329.579 99.3005 345.261 111.924C360.942 124.548 373.421 138.892 382.697 154.958C391.311 169.877 395.121 182.978 394.128 194.262C393.355 205.546 389.656 215.396 383.031 223.811C376.627 232.226 366.688 242.554 353.217 254.794L435.375 254.797L464.198 304.716L275.367 304.709L246.544 254.79Z" fill="#4B0600"/>
-                            <path d="M246.544 254.79L246.875 254.79C253.722 247.905 264.046 238.82 277.849 227.537C291.21 216.253 301.259 207.264 307.995 200.57C314.62 193.685 319.147 186.418 321.577 178.768C324.006 171.117 322.846 163.18 318.097 154.956C312.796 145.775 305.342 138.412 295.735 132.865C286.238 127.127 276.189 124.258 265.588 124.257C255.208 124.257 248.416 127.03 245.214 132.576C241.902 137.931 243.006 145.39 248.528 154.953L183.928 154.951C174.652 138.885 170.676 124.541 172 111.918C173.546 99.2946 179.84 89.5408 190.882 82.6559C202.035 75.5798 216.887 72.0421 235.439 72.0428C254.874 72.0435 274.144 75.5825 293.248 82.6598C312.242 89.5457 329.579 99.3005 345.261 111.924C360.942 124.548 373.421 138.892 382.697 154.958C391.311 169.877 395.121 182.978 394.128 194.262C393.355 205.546 389.656 215.396 383.031 223.811C376.627 232.226 366.688 242.554 353.217 254.794L435.375 254.797L464.198 304.716L275.367 304.709L246.544 254.79Z" stroke="#FF750F" stroke-width="1" stroke-linejoin="round"/>
-                        </g>
-                        <g class="transition-all delay-300 translate-y-0 opacity-100 duration-750 starting:opacity-0 starting:translate-y-4" style="mix-blend-mode:hard-light">
-                            <path d="M67.41 125.402L44.5515 125.401L15.5625 75.1953L101.364 75.1985L233.886 304.712L170.942 304.71L67.41 125.402Z" fill="#4B0600"/>
-                            <path d="M67.41 125.402L44.5515 125.401L15.5625 75.1953L101.364 75.1985L233.886 304.712L170.942 304.71L67.41 125.402Z" stroke="#FF750F" stroke-width="1"/>
-                        </g>
-                    </svg>
-                    <div class="absolute inset-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"></div>
-                </div>
-            </main>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" content="/assets/og-COvfezBE.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/assets/og-COvfezBE.png" />
+    <meta name="twitter:image:src" content="src/img/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta name="twitter:image:width" content="1200" />
+    <meta property="og:image:height" content="600" />
+    <meta name="twitter:image:height" content="600" />
+    <meta
+      name="description"
+      content="Welcome to 1EZ School Homepage. Here you can find all the information about our platform and more!"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="1ez.co" />
+    <meta property="og:title" content="1EZ School - Home" />
+    <meta
+      property="og:description"
+      content="Welcome to 1EZ School Homepage. Here you can find all the information about our platform and more!"
+    />
+    <meta name="twitter:title" content="1EZ School - Home" />
+    <meta name="twitter:site" content="1ez.co" />
+    <meta
+      name="twitter:description"
+      content="Welcome to 1EZ School Homepage. Here you can find all the information about our platform and more!"
+    />
+    <title>1EZ</title>
+    <link rel="shortcut icon" href="/assets/favicon-DKp-brIw.ico" type="image/x-icon" />
+    <script type="module" crossorigin src="/assets/index-CIWBjlC-.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-C5N5nFt-.css">
+  </head>
+  <body class="bg-light !overflow-x-hidden">
+    <!-- header -->
+    <header
+      class="w-full h-fit !sticky bg-zinc-100/70 shadow top-0 right-0 left-0 z-50 backdrop-blur-md"
+    >
+      <nav
+        class="flex flex-col gap-4 md:flex-row md:justify-between max-w-public-prefer mx-auto px-4 py-6 md:px-4 prefer:px-0 transition-all duration-300"
+      >
+        <!-- logo -->
+        <div class="flex justify-between items-center md:w-max">
+          <a href="/" class="gradient-text text-2xl font-semibold">
+            <div class="h-7">
+              <svg
+                width="508"
+                height="176"
+                viewbox="0 0 508 176"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-full h-full object-cover"
+              >
+                <path
+                  d="M265.861 24V152.727H230.913V56.1818H230.159L202 73.027V43.3594L233.679 24H265.861Z"
+                  fill="#F64838"
+                ></path>
+                <path
+                  d="M292.04 152.727V24H384.814V52.1591H326.987V74.2841H380.037V102.443H326.987V124.568H384.563V152.727H292.04Z"
+                  fill="#F64838"
+                ></path>
+                <path
+                  d="M402.649 152.727V133.368L463.493 52.1591H402.901V24H507.994V43.3594L447.151 124.568H507.743V152.727H402.649Z"
+                  fill="#F64838"
+                ></path>
+                <path
+                  d="M0 35C0 15.67 15.67 0 35 0H141C160.33 0 176 15.67 176 35V141C176 160.33 160.33 176 141 176H35C15.67 176 0 160.33 0 141V35Z"
+                  fill="#F64838"
+                ></path>
+                <path
+                  d="M81.75 105.818H53L93.25 25V71.1818H122L81.75 152V105.818Z"
+                  fill="white"
+                ></path>
+              </svg>
+            </div>
+          </a>
+          <svg
+            id="toggle"
+            xmlns="http://www.w3.org/2000/svg"
+            class="select-none size-6 md:hidden text-black transition duration-200 hover:text-primary"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 6h18M3 12h18M3 18h18"
+            />
+          </svg>
         </div>
+        <!-- navbar -->
+        <ul
+          id="navlink"
+          class="flex flex-col gap-2 border-t md:border-none border-gray-300 pt-4 md:p-0 items-center md:flex-row md:items-center md:gap-4 lg:gap-8 *:text-gray-600 *:font-semibold *:transition *:duration-200 *:hover:text-primary *:text-[1rem]"
+        >
+          <li><a href="#features">លក្ខណៈពិសេស</a></li>
+          <li><a href="#testimonials">ការគាំទ្រ</a></li>
+          <li><a href="#pricing">តម្លៃ</a></li>
+          <li><a href="#contact">ទំនាក់ទំនង</a></li>
+        </ul>
+        <!-- cta -->
+        <ul
+          id="cta"
+          class="flex flex-col items-center md:flex-row gap-6 *:text-gray-600 *:font-semibold *:transition *:duration-200 *:text-[1rem] pb-4 md:pb-0"
+        >
+          <li>
+            <a
+              href="#"
+              class="bg-transparent py-3 px-4 rounded-lg transition duration-200 hover:bg-gray-200"
+              >ចូលគណនី</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-white bg-primary py-3 px-4 rounded-lg transition duration-200 hover:bg-primary/80"
+              >ប្រើប្រាស់ឥឡូវនេះ</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!-- hero section -->
+      <section class="mt-14">
+        <!-- hero container -->
+        <div
+          class="mx-auto grid max-w-public-prefer grid-cols-1 items-center gap-4 px-4 public-prefer:px-0 md:px-4 lg:grid-cols-2"
+        >
+          <!-- left side -->
+          <div class="flex flex-col items-center gap-5 lg:items-start">
+            <span
+              class="w-max rounded-full border border-primary/10 bg-primary/5 px-4 py-1 font-medium text-primary"
+              >លំហូរនៃកិច្ចការរដ្ឋបាល</span
+            >
+            <h2
+              class="text-center text-3xl leading-10 font-bold text-zinc-900 md:text-5xl md:leading-14 lg:text-left"
+            >
+              សម្រួលរាល់កិច្ចការ <br />
+              <span class="text-primary">រដ្ឋបាលរបស់សាលារៀន</span>
+            </h2>
+            <p
+              class="text-center text-xl text-balance text-gray-600 lg:text-left"
+            >
+              តើលោកគ្រូ អ្នកគ្រូចំណាយពេលវេលាច្រើនលើកិច្ចការរដ្ឋបាលមែនទេ?
+              អស់បារម្មណ៍ទៀតហើយជាមួយនឹងកម្មវិធីរបស់ពួកយើង!
+            </p>
+            <div
+              class="flex w-full flex-col items-center gap-4 md:mx-auto md:w-max md:flex-row lg:m-0"
+            >
+              <a
+                href="/app/dashboard"
+                class="group flex h-max w-full shrink-0 cursor-pointer items-center justify-center gap-1 rounded-lg bg-primary py-2 font-bold text-white transition duration-200 md:w-max md:px-6 lg:hover:bg-primary/80"
+              >
+                <span>ប្រើប្រាស់ឥឡូវនេះ</span>
+                <svg
+                  class="size-5 transition duration-300 group-hover:translate-x-1.5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M16.15 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#contact"
+                class="w-full shrink-0 cursor-pointer rounded-lg border border-primary/30 bg-transparent py-2 text-center font-bold text-zinc-900 transition duration-200 md:w-max md:px-6 lg:hover:bg-primary/10"
+              >
+                កក់នូវសេវាកម្ម
+              </a>
+            </div>
+            <ul
+              class="mb-6 flex flex-col items-start gap-2 md:flex-row lg:gap-6"
+            >
+              <li
+                class="flex items-center gap-2 *:first:size-6 *:first:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                  />
+                </svg>
+                <span class="text-gray-700"> ងាយស្រួលប្រើប្រាស់ </span>
+              </li>
+              <li
+                class="flex items-center gap-2 *:first:size-6 *:first:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                  />
+                </svg>
+                <span class="text-gray-700"> មានការ support 24/7 </span>
+              </li>
+              <li
+                class="flex items-center gap-2 *:first:size-6 *:first:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                  />
+                </svg>
+                <span class="text-gray-700"> មានសុវត្តិភាព </span>
+              </li>
+            </ul>
+          </div>
+          <!-- right side -->
+          <div
+            class="relative rounded-md border-2 border-orange-600/30 p-4 shadow-sm shadow-orange-600/10 after:absolute after:-inset-1 after:isolate after:z-10 after:rounded-[inherit] after:bg-gradient-to-b after:from-transparent after:from-60% after:to-[#f9fafb] after:to-95% after:content-[''] md:mx-auto md:w-3/4 lg:w-full"
+          >
+            <svg
+              width="663"
+              class="aspect-[6.63/3.57] h-full w-full object-cover"
+              height="357"
+              viewBox="0 0 663 357"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="fill-orange-600/30"
+                d="M102.96 0H3.95999C1.77295 0 0 1.77388 0 3.96208V352.625C0 354.813 1.77295 356.587 3.95999 356.587H102.96C105.147 356.587 106.92 354.813 106.92 352.625V3.96208C106.92 1.77388 105.147 0 102.96 0Z"
+              />
+              <path
+                d="M3.95996 0.5H102.96C104.87 0.500186 106.42 2.0498 106.42 3.96191V352.625C106.42 354.537 104.87 356.087 102.96 356.087H3.95996C2.04932 356.087 0.5 354.537 0.5 352.625V3.96191C0.500089 2.0497 2.04938 0.500013 3.95996 0.5Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                d="M43.5599 14.8578H63.3598C64.9352 14.8578 66.446 15.4839 67.56 16.5985C68.6739 17.713 69.2998 19.2247 69.2998 20.8009V24.763C69.2998 26.3392 68.6739 27.8509 67.56 28.9654C66.446 30.08 64.9352 30.7061 63.3598 30.7061H43.5599C41.9845 30.7061 40.4736 30.08 39.3597 28.9654C38.2457 27.8509 37.6199 26.3392 37.6199 24.763V20.8009C37.6199 19.2247 38.2457 17.713 39.3597 16.5985C40.4736 15.4839 41.9845 14.8578 43.5599 14.8578Z"
+                fill="white"
+              />
+              <path
+                d="M43.5603 15.3578H63.3601C64.8027 15.3579 66.1867 15.9309 67.2068 16.9515C68.227 17.9723 68.7996 19.3575 68.7996 20.8011V24.7631C68.7995 26.2066 68.2268 27.591 67.2068 28.6117C66.1867 29.6324 64.8027 30.2063 63.3601 30.2064H43.5603C42.1176 30.2064 40.7338 29.6324 39.7136 28.6117C38.6934 27.5909 38.1199 26.2067 38.1199 24.7631V20.8011C38.1199 19.3575 38.6934 17.9723 39.7136 16.9515C40.7338 15.931 42.1178 15.3578 43.5603 15.3578Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                d="M17.82 324.89H89.0997C90.15 324.89 91.1572 325.308 91.8998 326.051C92.6425 326.794 93.0597 327.802 93.0597 328.853V336.777C93.0597 337.828 92.6425 338.835 91.8998 339.578C91.1572 340.321 90.15 340.739 89.0997 340.739H17.82C16.7697 340.739 15.7625 340.321 15.0198 339.578C14.2772 338.835 13.86 337.828 13.86 336.777V328.853C13.86 327.802 14.2772 326.794 15.0198 326.051C15.7625 325.308 16.7697 324.89 17.82 324.89Z"
+                fill="white"
+              />
+              <path
+                d="M17.8199 325.39H89.0992C90.0168 325.39 90.8976 325.755 91.5465 326.404C92.1954 327.053 92.5592 327.934 92.5592 328.852V336.777C92.5591 337.695 92.1951 338.575 91.5465 339.224C90.8976 339.874 90.0168 340.239 89.0992 340.239H17.8199C16.9024 340.239 16.0225 339.874 15.3737 339.224C14.7249 338.575 14.3601 337.695 14.36 336.777V328.852C14.36 327.934 14.7248 327.053 15.3737 326.404C16.0225 325.755 16.9025 325.39 17.8199 325.39Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                class="animate-pulse"
+                d="M85.1397 46.5544H21.78C17.4059 46.5544 13.86 50.1022 13.86 54.4786C13.86 58.855 17.4059 62.4027 21.78 62.4027H85.1397C89.5138 62.4027 93.0597 58.855 93.0597 54.4786C93.0597 50.1022 89.5138 46.5544 85.1397 46.5544Z"
+                fill="white"
+              />
+              <path
+                d="M21.7799 47.0544H85.1393C89.2369 47.0544 92.56 50.3779 92.5602 54.4782C92.5602 58.5787 89.237 61.9031 85.1393 61.9031H21.7799C17.6822 61.903 14.36 58.5787 14.36 54.4782C14.3602 50.3779 17.6824 47.0544 21.7799 47.0544Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <g opacity="1" class="animate-pulse">
+                <path
+                  d="M85.1397 70.3269H21.78C17.4059 70.3269 13.86 73.8747 13.86 78.2511C13.86 82.6274 17.4059 86.1752 21.78 86.1752H85.1397C89.5138 86.1752 93.0597 82.6274 93.0597 78.2511C93.0597 73.8747 89.5138 70.3269 85.1397 70.3269Z"
+                  fill="white"
+                />
+                <path
+                  d="M21.7799 70.8269H85.1393C89.2369 70.8269 92.56 74.1504 92.5602 78.2507C92.5602 82.3512 89.237 85.6755 85.1393 85.6755H21.7799C17.6822 85.6755 14.36 82.3512 14.36 78.2507C14.3602 74.1504 17.6824 70.8269 21.7799 70.8269Z"
+                  stroke="#F64838"
+                  stroke-opacity="0.5"
+                />
+              </g>
+              <g opacity="1" class="animate-pulse delay-200">
+                <path
+                  d="M85.1397 94.0994H21.78C17.4059 94.0994 13.86 97.6471 13.86 102.024C13.86 106.4 17.4059 109.948 21.78 109.948H85.1397C89.5138 109.948 93.0597 106.4 93.0597 102.024C93.0597 97.6471 89.5138 94.0994 85.1397 94.0994Z"
+                  fill="white"
+                />
+                <path
+                  d="M21.7799 94.5994H85.1393C89.2369 94.5994 92.56 97.9228 92.5602 102.023C92.5602 106.124 89.237 109.448 85.1393 109.448H21.7799C17.6822 109.448 14.36 106.124 14.36 102.023C14.3602 97.9229 17.6824 94.5994 21.7799 94.5994Z"
+                  stroke="#F64838"
+                  stroke-opacity="0.5"
+                />
+              </g>
+              <g opacity="1" class="animate-pulse delay-200">
+                <path
+                  d="M85.1397 117.872H21.78C17.4059 117.872 13.86 121.42 13.86 125.796C13.86 130.172 17.4059 133.72 21.78 133.72H85.1397C89.5138 133.72 93.0597 130.172 93.0597 125.796C93.0597 121.42 89.5138 117.872 85.1397 117.872Z"
+                  fill="white"
+                />
+                <path
+                  d="M21.7799 118.372H85.1393C89.2369 118.372 92.56 121.695 92.5602 125.796C92.5602 129.896 89.237 133.22 85.1393 133.22H21.7799C17.6822 133.22 14.36 129.896 14.36 125.796C14.3602 121.695 17.6824 118.372 21.7799 118.372Z"
+                  stroke="#F64838"
+                  stroke-opacity="0.5"
+                />
+              </g>
+              <g opacity="1" class="animate-pulse delay-300">
+                <path
+                  d="M85.1397 141.644H21.78C17.4059 141.644 13.86 145.192 13.86 149.568C13.86 153.945 17.4059 157.493 21.78 157.493H85.1397C89.5138 157.493 93.0597 153.945 93.0597 149.568C93.0597 145.192 89.5138 141.644 85.1397 141.644Z"
+                  fill="white"
+                />
+                <path
+                  d="M21.7799 142.144H85.1393C89.2369 142.144 92.56 145.468 92.5602 149.568C92.5602 153.669 89.237 156.993 85.1393 156.993H21.7799C17.6822 156.993 14.36 153.669 14.36 149.568C14.3602 145.468 17.6824 142.144 21.7799 142.144Z"
+                  stroke="#F64838"
+                  stroke-opacity="0.5"
+                />
+              </g>
+              <path
+                d="M143.55 0H214.829C215.88 0 216.887 0.417432 217.629 1.16047C218.372 1.9035 218.789 2.91127 218.789 3.96208V11.8862C218.789 12.937 218.372 13.9448 217.629 14.6879C216.887 15.4309 215.88 15.8483 214.829 15.8483H143.55C142.499 15.8483 141.492 15.4309 140.749 14.6879C140.007 13.9448 139.59 12.937 139.59 11.8862V3.96208C139.59 2.91127 140.007 1.9035 140.749 1.16047C141.492 0.417432 142.499 0 143.55 0Z"
+                fill="#F2F2F2"
+              />
+              <path
+                d="M143.55 0.5H214.829C215.746 0.5 216.627 0.864436 217.276 1.51367C217.925 2.16287 218.289 3.0437 218.289 3.96191V11.8867C218.289 12.8047 217.925 13.6849 217.276 14.334C216.627 14.9832 215.746 15.3486 214.829 15.3486H143.55C142.632 15.3486 141.752 14.9832 141.103 14.334C140.455 13.6849 140.09 12.8048 140.09 11.8867V3.96191C140.09 3.04369 140.454 2.16288 141.103 1.51367C141.752 0.864574 142.632 0.500006 143.55 0.5Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                class="animate-pulse"
+                d="M290.069 37.6397H147.51C143.135 37.6397 139.59 41.1875 139.59 45.5639V116.881C139.59 121.258 143.135 124.805 147.51 124.805H290.069C294.443 124.805 297.989 121.258 297.989 116.881V45.5639C297.989 41.1875 294.443 37.6397 290.069 37.6397Z"
+                fill="#F64838"
+              />
+              <path
+                d="M147.51 38.1397H290.069C294.167 38.1398 297.489 41.4632 297.489 45.5636V116.881C297.489 120.981 294.167 124.306 290.069 124.306H147.51C143.412 124.306 140.09 120.981 140.09 116.881V45.5636C140.09 41.4632 143.412 38.1398 147.51 38.1397Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                d="M646.468 291.213H155.43C146.681 291.213 139.59 298.308 139.59 307.061V340.739C139.59 349.492 146.681 356.587 155.43 356.587H646.468C655.216 356.587 662.308 349.492 662.308 340.739V307.061C662.308 298.308 655.216 291.213 646.468 291.213Z"
+                fill="#F2F2F2"
+              />
+              <path
+                d="M155.429 291.713H646.468C654.939 291.713 661.807 298.585 661.807 307.061V340.739C661.807 349.216 654.939 356.087 646.468 356.087H155.429C146.958 356.087 140.09 349.216 140.09 340.739V307.061C140.09 298.717 146.745 291.928 155.034 291.718L155.429 291.713Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                d="M587.068 0H658.348C659.398 0 660.405 0.417432 661.148 1.16047C661.89 1.9035 662.308 2.91127 662.308 3.96208V11.8862C662.308 12.937 661.89 13.9448 661.148 14.6879C660.405 15.4309 659.398 15.8483 658.348 15.8483H587.068C586.018 15.8483 585.01 15.4309 584.268 14.6879C583.525 13.9448 583.108 12.937 583.108 11.8862V3.96208C583.108 2.91127 583.525 1.9035 584.268 1.16047C585.01 0.417432 586.018 0 587.068 0Z"
+                fill="#F64838"
+              />
+              <path
+                d="M587.068 0.5H658.347C659.265 0.5 660.146 0.864436 660.794 1.51367C661.443 2.16287 661.807 3.0437 661.807 3.96191V11.8867C661.807 12.8047 661.443 13.6849 660.794 14.334C660.146 14.9832 659.265 15.3486 658.347 15.3486H587.068C586.15 15.3486 585.27 14.9832 584.622 14.334C583.973 13.6849 583.608 12.8048 583.608 11.8867V3.96191C583.608 3.04369 583.973 2.16288 584.622 1.51367C585.27 0.864574 586.15 0.500006 587.068 0.5Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                class="animate-pulse delay-1000"
+                d="M654.388 37.6397H511.828C507.454 37.6397 503.908 41.1875 503.908 45.5639V116.881C503.908 121.258 507.454 124.805 511.828 124.805H654.388C658.762 124.805 662.308 121.258 662.308 116.881V45.5639C662.308 41.1875 658.762 37.6397 654.388 37.6397Z"
+                fill="#F64838"
+              />
+              <path
+                d="M511.828 38.1397H654.388C658.485 38.1398 661.807 41.4632 661.808 45.5636V116.881C661.808 120.981 658.485 124.306 654.388 124.306H511.828C507.73 124.306 504.408 120.981 504.408 116.881V45.5636C504.408 41.4632 507.731 38.1398 511.828 38.1397Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                class="animate-pulse delay-500"
+                d="M472.228 37.6397H329.669C325.295 37.6397 321.749 41.1875 321.749 45.5639V116.881C321.749 121.258 325.295 124.805 329.669 124.805H472.228C476.602 124.805 480.148 121.258 480.148 116.881V45.5639C480.148 41.1875 476.602 37.6397 472.228 37.6397Z"
+                fill="#F64838"
+              />
+              <path
+                d="M329.669 38.1397H472.228C476.326 38.1398 479.648 41.4632 479.648 45.5636V116.881C479.648 120.981 476.326 124.306 472.228 124.306H329.669C325.571 124.306 322.249 120.981 322.249 116.881V45.5636C322.249 41.4632 325.571 38.1398 329.669 38.1397Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                d="M646.468 213.952H155.43C146.681 213.952 139.59 221.048 139.59 229.801V263.478C139.59 272.231 146.681 279.327 155.43 279.327H646.468C655.216 279.327 662.308 272.231 662.308 263.478V229.801C662.308 221.048 655.216 213.952 646.468 213.952Z"
+                fill="#F2F2F2"
+              />
+              <path
+                d="M155.429 214.452H646.468C654.939 214.452 661.807 221.324 661.807 229.801V263.479C661.807 271.955 654.939 278.826 646.468 278.826H155.429C146.958 278.826 140.09 271.955 140.09 263.479V229.801C140.09 221.456 146.745 214.667 155.034 214.457L155.429 214.452Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+              <path
+                d="M646.468 136.692H155.43C146.681 136.692 139.59 143.787 139.59 152.54V186.218C139.59 194.97 146.681 202.066 155.43 202.066H646.468C655.216 202.066 662.308 194.97 662.308 186.218V152.54C662.308 143.787 655.216 136.692 646.468 136.692Z"
+                fill="#F2F2F2"
+              />
+              <path
+                d="M155.429 137.192H646.468C654.939 137.192 661.807 144.063 661.807 152.54V186.218C661.807 194.695 654.939 201.566 646.468 201.566H155.429C146.958 201.566 140.09 194.695 140.09 186.218V152.54C140.09 144.196 146.745 137.407 155.034 137.197L155.429 137.192Z"
+                stroke="#F64838"
+                stroke-opacity="0.5"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+      <!-- features section -->
+      <section id="features" class="mt-36">
+        <!-- features container -->
+        <div
+          class="mx-auto grid max-w-public-prefer grid-cols-1 justify-items-center gap-5 px-4 public-prefer:px-0 md:px-4"
+        >
+          <span
+            class="w-max rounded-full border border-primary/10 bg-primary/5 px-4 py-1 font-medium text-primary"
+            >រាល់លក្ខណៈពិសេសរបស់ប្រព័ន្ធ</span
+          >
+          <!-- feature title -->
+          <h2
+            class="text-center text-xl font-bold text-balance text-black md:text-3xl lg:w-[90%]"
+          >
+            រាល់កិច្ចការសម្រាប់ផ្នែកអប់រំទាំងឡាយគឺអាចដោះស្រាយបានជាមួយប្រព័ន្ធរបស់យើង
+          </h2>
+          <!-- feature subtitle -->
+          <h3 class="mb-8 text-center text-lg text-gray-600 md:text-xl">
+            ចំណុចពិសេសខាងក្រោមនេះអាចធ្វើឱ្យអ្នកជ្រើសរើសយកពួកយើង៖
+          </h3>
+          <!-- all cards -->
+          <div
+            class="grid h-max w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-8"
+          >
+            <!-- each card -->
+            <div
+              class="card rounded-xl bg-white p-6 shadow transition duration-200 hover:-translate-y-2 lg:shadow-lg"
+            >
+              <!-- card icon -->
+              <div
+                class="mb-3 grid h-max w-max place-items-center rounded-lg bg-primary/10 p-2 *:size-7 *:text-primary"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M2 5V3q0-.825.588-1.412T4 1h2q.425 0 .713.288T7 2t-.288.713T6 3H4v2q0 .425-.288.713T3 6t-.712-.288T2 5m18 0V3h-2q-.425 0-.712-.288T17 2t.288-.712T18 1h2q.825 0 1.413.588T22 3v2q0 .425-.288.713T21 6t-.712-.288T20 5M2 21v-2q0-.425.288-.712T3 18t.713.288T4 19v2h2q.425 0 .713.288T7 22t-.288.713T6 23H4q-.825 0-1.412-.587T2 21m18 2h-2q-.425 0-.712-.288T17 22t.288-.712T18 21h2v-2q0-.425.288-.712T21 18t.713.288T22 19v2q0 .825-.587 1.413T20 23M7 18h10V6H7zm0 2q-.825 0-1.412-.587T5 18V6q0-.825.588-1.412T7 4h10q.825 0 1.413.588T19 6v12q0 .825-.587 1.413T17 20zm3-10h4q.425 0 .713-.288T15 9t-.288-.712T14 8h-4q-.425 0-.712.288T9 9t.288.713T10 10m0 3h4q.425 0 .713-.288T15 12t-.288-.712T14 11h-4q-.425 0-.712.288T9 12t.288.713T10 13m0 3h4q.425 0 .713-.288T15 15t-.288-.712T14 14h-4q-.425 0-.712.288T9 15t.288.713T10 16m-3 2V6z"
+                  />
+                </svg>
+              </div>
+              <!-- card title -->
+              <h3
+                class="mb-2 line-clamp-1 text-2xl font-semibold text-black/80"
+              >
+                ឯកសារតាមបែបឌីជីថល
+              </h3>
+              <!-- card description -->
+              <p class="line-clamp-3 text-lg font-light text-gray-600">
+                រាល់ឯកសារ និងលិខិតស្នាមផ្សេងៗនឹងត្រូវធ្វើឡើងក្នុងទម្រងឌីជីថល
+                ដែលផ្ដល់ភាពងាយស្រួលក្នុងការស្វែងរក។
+              </p>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl bg-white p-6 shadow transition duration-200 hover:-translate-y-2 lg:shadow-lg"
+            >
+              <!-- card icon -->
+              <div
+                class="mb-3 grid h-max w-max place-items-center rounded-lg bg-primary/10 p-2 *:size-7 *:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m10.95 13.7l-1.425-1.425q-.3-.3-.7-.3t-.7.3t-.3.713t.3.712l2.125 2.15q.3.3.7.3t.7-.3l4.25-4.25q.3-.3.3-.712t-.3-.713t-.712-.3t-.713.3zM12 22q-1.875 0-3.512-.712t-2.85-1.925t-1.925-2.85T3 13t.713-3.512t1.924-2.85t2.85-1.925T12 4t3.513.713t2.85 1.925t1.925 2.85T21 13t-.712 3.513t-1.925 2.85t-2.85 1.925T12 22M2.05 7.3q-.275-.275-.275-.7t.275-.7L4.9 3.05q.275-.275.7-.275t.7.275t.275.7t-.275.7L3.45 7.3q-.275.275-.7.275t-.7-.275m19.9 0q-.275.275-.7.275t-.7-.275L17.7 4.45q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l2.85 2.85q.275.275.275.7t-.275.7M12 20q2.925 0 4.963-2.037T19 13t-2.037-4.962T12 6T7.038 8.038T5 13t2.038 4.963T12 20"
+                  />
+                </svg>
+              </div>
+              <!-- card title -->
+              <h3
+                class="mb-2 line-clamp-1 text-2xl font-semibold text-black/80"
+              >
+                សន្សំសំចៃពេលវេលា
+              </h3>
+              <!-- card description -->
+              <p class="line-clamp-3 text-lg font-light text-gray-600">
+                ពួកយើងខិតខំស្វែងរកមុខងារទាំងឡាយដែលធ្វើឱ្យបុគ្គលិកអប់រំអាចចំណេញពេលវេលាក្នុងការបង្រៀន។
+              </p>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl bg-white p-6 shadow transition duration-200 hover:-translate-y-2 lg:shadow-lg"
+            >
+              <!-- card icon -->
+              <div
+                class="mb-3 grid h-max w-max place-items-center rounded-lg bg-primary/10 p-2 *:size-7 *:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 48 48"
+                >
+                  <g
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linejoin="round"
+                    stroke-width="4"
+                  >
+                    <path
+                      d="M6 9.256L24.009 4L42 9.256v10.778A26.32 26.32 0 0 1 24.003 45A26.32 26.32 0 0 1 6 20.029z"
+                    />
+                    <path stroke-linecap="round" d="m15 23l7 7l12-12" />
+                  </g>
+                </svg>
+              </div>
+              <!-- card title -->
+              <h3
+                class="mb-2 line-clamp-1 text-2xl font-semibold text-black/80"
+              >
+                ព័ត៌មានមានសុវត្ថិភាព
+              </h3>
+              <!-- card description -->
+              <p class="line-clamp-3 text-lg font-light text-gray-600">
+                រាល់ផ្នែកនៃព័ត៌មានទាំងឡាយសុទ្ធតែត្រូវការព៏ត៌មានផ្ទាល់ខ្លួនតាមរយៈការ
+                Login ទើបអាចចូលប្រើប្រាស់បាន។
+              </p>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl bg-white p-6 shadow transition duration-200 hover:-translate-y-2 lg:shadow-lg"
+            >
+              <!-- card icon -->
+              <div
+                class="mb-3 grid h-max w-max place-items-center rounded-lg bg-primary/10 p-2 *:size-7 *:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 48 48"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="4"
+                    d="M19 20a7 7 0 1 0 0-14a7 7 0 0 0 0 14M32.608 7A7 7 0 0 1 36 13a7 7 0 0 1-3.392 6M4 40.8V42h30v-1.2c0-4.48 0-6.72-.872-8.432a8 8 0 0 0-3.496-3.496C27.92 28 25.68 28 21.2 28h-4.4c-4.48 0-6.72 0-8.432.872a8 8 0 0 0-3.496 3.496C4 34.08 4 36.32 4 40.8M44 42v-1.2c0-4.48 0-6.72-.872-8.432a8 8 0 0 0-3.496-3.496"
+                  />
+                </svg>
+              </div>
+              <!-- card title -->
+              <h3
+                class="mb-2 line-clamp-1 text-2xl font-semibold text-black/80"
+              >
+                កំណត់អត្តសញ្ញាណត្រឹមត្រូវ
+              </h3>
+              <!-- card description -->
+              <p class="line-clamp-3 text-lg font-light text-gray-600">
+                រាល់ការចុះឈ្មោះរបស់អ្នកប្រើប្រាស់ ត្រូវតែមាន email ផ្ទៀតផ្ទាត់
+                ត្រឹមត្រូវ សម្រាប់ verification code។
+              </p>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl bg-white p-6 shadow transition duration-200 hover:-translate-y-2 lg:shadow-lg"
+            >
+              <!-- card icon -->
+              <div
+                class="mb-3 grid h-max w-max place-items-center rounded-lg bg-primary/10 p-2 *:size-7 *:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M21.92 6.62a1 1 0 0 0-.54-.54A1 1 0 0 0 21 6h-5a1 1 0 0 0 0 2h2.59L13 13.59l-3.29-3.3a1 1 0 0 0-1.42 0l-6 6a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L9 12.41l3.29 3.3a1 1 0 0 0 1.42 0L20 9.41V12a1 1 0 0 0 2 0V7a1 1 0 0 0-.08-.38"
+                  />
+                </svg>
+              </div>
+              <!-- card title -->
+              <h3
+                class="mb-2 line-clamp-1 text-2xl font-semibold text-black/80"
+              >
+                សោភណភាពរបាយការណ៍
+              </h3>
+              <!-- card description -->
+              <p class="line-clamp-3 text-lg font-light text-gray-600">
+                របាយការណ៍មានសោភណភាពស្រស់ស្អាត ងាយយល់
+                ងាយទទួលបានទិន្នន័យសម្រាប់គណៈគ្រប់គ្រងគ្រប់រូប។
+              </p>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl bg-white p-6 shadow transition duration-200 hover:-translate-y-2 lg:shadow-lg"
+            >
+              <!-- card icon -->
+              <div
+                class="mb-3 grid h-max w-max place-items-center rounded-lg bg-primary/10 p-2 *:size-7 *:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 48 48"
+                >
+                  <g
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="4"
+                  >
+                    <path
+                      stroke-linejoin="round"
+                      d="M33 38H22v-8h14v-8h8v16h-5l-3 3z"
+                    />
+                    <path
+                      stroke-linejoin="round"
+                      d="M4 6h32v24H17l-4 4l-4-4H4z"
+                    />
+                    <path d="M19 18h1m6 0h1m-15 0h1" />
+                  </g>
+                </svg>
+              </div>
+              <!-- card title -->
+              <h3
+                class="mb-2 line-clamp-1 text-2xl font-semibold text-black/80"
+              >
+                ងាយស្រួលទំនាក់ទំនង
+              </h3>
+              <!-- card description -->
+              <p class="line-clamp-3 text-lg font-light text-gray-600">
+                យើងនឹងបន្ថែមមុខងារទំនាក់ទំនង
+                សម្រាប់បុគ្គលិកអប់រំប្រើប្រាស់ក្នុងកម្មវិធីផ្ទាល់ (future
+                feature)។
+              </p>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl bg-white p-6 shadow transition duration-200 hover:-translate-y-2 lg:shadow-lg"
+            >
+              <!-- card icon -->
+              <div
+                class="mb-3 grid h-max w-max place-items-center rounded-lg bg-primary/10 p-2 *:size-7 *:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M5 22q-.825 0-1.412-.587T3 20V6q0-.825.588-1.412T5 4h1V3q0-.425.288-.712T7 2t.713.288T8 3v1h8V3q0-.425.288-.712T17 2t.713.288T18 3v1h1q.825 0 1.413.588T21 6v14q0 .825-.587 1.413T19 22zm0-2h14V10H5zM5 8h14V6H5zm0 0V6z"
+                  />
+                </svg>
+              </div>
+              <!-- card title -->
+              <h3
+                class="mb-2 line-clamp-1 text-2xl font-semibold text-black/80"
+              >
+                កំណត់កម្មវិធីសិក្សាប្រចាំឆ្នាំ
+              </h3>
+              <!-- card description -->
+              <p class="line-clamp-3 text-lg font-light text-gray-600">
+                អ្នកប្រើប្រាស់អាចបង្កើតថ្នាក់រៀន
+                និងកាលវិភាគក្នុងកម្មវិធីដើម្បីបង្កើតជាកាលវិភាគទាំងមូលរបស់សាលា។
+              </p>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl bg-white p-6 shadow transition duration-200 hover:-translate-y-2 lg:shadow-lg"
+            >
+              <!-- card icon -->
+              <div
+                class="mb-3 grid h-max w-max place-items-center rounded-lg bg-primary/10 p-2 *:size-7 *:text-primary"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M10.825 22q-.675 0-1.162-.45t-.588-1.1L8.85 18.8q-.325-.125-.612-.3t-.563-.375l-1.55.65q-.625.275-1.25.05t-.975-.8l-1.175-2.05q-.35-.575-.2-1.225t.675-1.075l1.325-1Q4.5 12.5 4.5 12.337v-.675q0-.162.025-.337l-1.325-1Q2.675 9.9 2.525 9.25t.2-1.225L3.9 5.975q.35-.575.975-.8t1.25.05l1.55.65q.275-.2.575-.375t.6-.3l.225-1.65q.1-.65.588-1.1T10.825 2h2.35q.675 0 1.163.45t.587 1.1l.225 1.65q.325.125.613.3t.562.375l1.55-.65q.625-.275 1.25-.05t.975.8l1.175 2.05q.35.575.2 1.225t-.675 1.075l-1.325 1q.025.175.025.338v.674q0 .163-.05.338l1.325 1q.525.425.675 1.075t-.2 1.225l-1.2 2.05q-.35.575-.975.8t-1.25-.05l-1.5-.65q-.275.2-.575.375t-.6.3l-.225 1.65q-.1.65-.587 1.1t-1.163.45zM11 20h1.975l.35-2.65q.775-.2 1.438-.587t1.212-.938l2.475 1.025l.975-1.7l-2.15-1.625q.125-.35.175-.737T17.5 12t-.05-.787t-.175-.738l2.15-1.625l-.975-1.7l-2.475 1.05q-.55-.575-1.212-.962t-1.438-.588L13 4h-1.975l-.35 2.65q-.775.2-1.437.588t-1.213.937L5.55 7.15l-.975 1.7l2.15 1.6q-.125.375-.175.75t-.05.8q0 .4.05.775t.175.75l-2.15 1.625l.975 1.7l2.475-1.05q.55.575 1.213.963t1.437.587zm1.05-4.5q1.45 0 2.475-1.025T15.55 12t-1.025-2.475T12.05 8.5q-1.475 0-2.487 1.025T8.55 12t1.013 2.475T12.05 15.5M12 12"
+                  />
+                </svg>
+              </div>
+              <!-- card title -->
+              <h3
+                class="mb-2 line-clamp-1 text-2xl font-semibold text-black/80"
+              >
+                customize តាមតម្រូវការ
+              </h3>
+              <!-- card description -->
+              <p class="line-clamp-3 text-lg font-light text-gray-600">
+                ផ្ទាំងបង្ហាញ (UI) អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ប្ដូរពណ៌ (Dark &
+                Light modes) និងមានការកំណត់ផ្សេងៗទៀត។
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- testimonials section -->
+      <section id="testimonials" class="mt-16 bg-white py-16">
+        <!-- testimonials container -->
+        <div
+          class="mx-auto grid max-w-public-prefer grid-cols-1 justify-items-center gap-5 px-4 public-prefer:px-0 md:px-4"
+        >
+          <span
+            class="w-max rounded-full border border-primary/10 bg-primary/5 px-4 py-1 font-medium text-primary"
+            >រាល់ការគាំទ្រមកកាន់ពួកយើង</span
+          >
+          <!-- title -->
+          <h2
+            class="text-center text-xl font-bold text-balance text-black md:text-3xl lg:w-[90%]"
+          >
+            ទំនុកចិត្តមកកាន់ សេវាកម្មរបស់យើង
+          </h2>
+          <!-- subtitle -->
+          <h3 class="mb-8 text-center text-lg text-gray-600 md:text-xl">
+            ខាងក្រោមនេះគឺជាការគាំទ្ររបស់បុគ្គលិកអប់រំមកកាន់ប្រព័ន្ធរបស់ពួកយើង៖
+          </h3>
+          <!-- all cards -->
+          <div
+            class="grid h-max w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8"
+          >
+            <!-- each card -->
+            <div
+              class="card rounded-xl border border-primary/30 bg-white p-6 transition duration-200 hover:-translate-y-2"
+            >
+              <!-- card icon -->
+              <div
+                class="h-ma mb-2 grid w-max place-items-center rounded-lg *:size-9 *:text-primary/40"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M7.17 17c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94m10 0c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94"
+                  />
+                </svg>
+              </div>
+              <!-- card description -->
+              <p class="line-clamp-4 text-lg font-light text-gray-600">
+                ប្រព័ន្ធរបស់អ្នកគឺជាប្រព័ន្ធដែលខ្ញុំប្រើប្រាស់ហើយ
+                ពិតជាបានជួយសន្សំសំចៃពេលវេលាបានច្រើនមែនទែន។
+                សំខាន់គឺវាពិតជាអាចទុកចិត្តបានថែមទាំងមានល្បឿនលឿន។
+              </p>
+              <!-- card rate -->
+              <div
+                class="my-4 flex items-center gap-0.5 *:size-5 *:text-yellow-500"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+              </div>
+              <!-- card rater -->
+              <h3 class="text-lg">
+                <span class="font-semibold text-black">លោកគ្រូ ICT</span> -
+                <span class="text-gray-600">វិទ្យាល័យកំពង់ស្ពឺ</span>
+              </h3>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl border border-primary/30 bg-white p-6 transition duration-200 hover:-translate-y-2"
+            >
+              <!-- card icon -->
+              <div
+                class="h-ma mb-2 grid w-max place-items-center rounded-lg *:size-9 *:text-primary/40"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M7.17 17c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94m10 0c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94"
+                  />
+                </svg>
+              </div>
+              <!-- card description -->
+              <p class="line-clamp-4 text-lg font-light text-gray-600">
+                ប្រព័ន្ធរបស់អ្នកគឺជាប្រព័ន្ធដែលខ្ញុំប្រើប្រាស់ហើយ
+                ពិតជាបានជួយសន្សំសំចៃពេលវេលាបានច្រើនមែនទែន។
+                សំខាន់គឺវាពិតជាអាចទុកចិត្តបានថែមទាំងមានល្បឿនលឿន។
+              </p>
+              <!-- card rate -->
+              <div
+                class="my-4 flex items-center gap-0.5 *:size-5 *:text-yellow-500"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+              </div>
+              <!-- card rater -->
+              <h3 class="text-lg">
+                <span class="font-semibold text-black">លោកគ្រូ គីមីវិទ្យា</span>
+                -
+                <span class="text-gray-600">វិទ្យាល័យជំពូវន្ត</span>
+              </h3>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl border border-primary/30 bg-white p-6 transition duration-200 hover:-translate-y-2"
+            >
+              <!-- card icon -->
+              <div
+                class="h-ma mb-2 grid w-max place-items-center rounded-lg *:size-9 *:text-primary/40"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M7.17 17c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94m10 0c.51 0 .98-.29 1.2-.74l1.42-2.84c.14-.28.21-.58.21-.89V8c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94"
+                  />
+                </svg>
+              </div>
+              <!-- card description -->
+              <p class="line-clamp-4 text-lg font-light text-gray-600">
+                ប្រព័ន្ធរបស់អ្នកគឺជាប្រព័ន្ធដែលខ្ញុំប្រើប្រាស់ហើយ
+                ពិតជាបានជួយសន្សំសំចៃពេលវេលាបានច្រើនមែនទែន។
+                សំខាន់គឺវាពិតជាអាចទុកចិត្តបានថែមទាំងមានល្បឿនលឿន។
+              </p>
+              <!-- card rate -->
+              <div
+                class="my-4 flex items-center gap-0.5 *:size-5 *:text-yellow-500"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+                  />
+                </svg>
+              </div>
+              <!-- card rater -->
+              <h3 class="text-lg">
+                <span class="font-semibold text-black"
+                  >លោកគ្រូ ប្រវត្តិវិទ្យា</span
+                >
+                -
+                <span class="text-gray-600">វិទ្យាល័យចំបក់ </span>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- pricing section -->
+      <section id="pricing" class="bg-light py-16">
+        <!-- pricing container -->
+        <div
+          class="mx-auto grid max-w-public-prefer grid-cols-1 justify-items-center gap-5 px-4 public-prefer:px-0 md:px-4"
+        >
+          <span
+            class="w-max rounded-full border border-primary/10 bg-primary/5 px-4 py-1 font-medium text-primary"
+            >តម្លៃនៃសេវាកម្មរបស់ពួកយើង</span
+          >
+          <!-- title -->
+          <h2
+            class="text-center text-xl font-bold text-balance text-black md:text-3xl lg:w-[90%]"
+          >
+            ការចំណាយសម្រាប់ប្រើប្រាស់សេវាកម្មរបស់ពួកយើង
+          </h2>
+          <!-- subtitle -->
+          <h3 class="mb-8 text-center text-lg text-gray-600 md:text-xl">
+            អ្នកអាចធ្វើការជ្រើសរើសនូវ គម្រោងណាមួយដែលត្រូវនឹងតម្រូវការរបស់អ្នក
+            ថែមទាំងទទួលបានការប្រើប្រាស់ដោយឥតគិតថ្លៃរយៈពេល 14 ថ្ងៃ៖
+          </h3>
+          <!-- all cards -->
+          <div
+            class="grid h-max w-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8"
+          >
+            <!-- each card -->
+            <div
+              class="card rounded-xl border border-primary/10 bg-white p-6 shadow-md transition duration-200 hover:shadow-2xl"
+            >
+              <!-- card title -->
+              <h3 class="mb-2 text-xl font-bold text-black">កម្រិតធម្មតា</h3>
+              <!-- card subtitle -->
+              <p class="line-clamp-2 text-lg font-light text-gray-600">
+                ល្អសម្រាប់សាលាដែលមានទំហំតូច និងកិច្ចការរដ្ឋបាលបន្តិចបន្តួច
+              </p>
+              <!-- card price -->
+              <h3
+                class="relative my-4 text-4xl font-bold text-black after:text-lg after:text-gray-500 after:content-['/ខែ']"
+              >
+                $5
+              </h3>
+              <!-- card detail -->
+              <ul
+                class="*:flex *:items-center *:gap-2 *:text-lg *:text-gray-600 [&>li:has(svg)_svg]:size-5 [&>li:has(svg)_svg]:text-primary"
+              >
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>Form ជាទម្រង់ឌីជីថលចាប់ពី 20ឡើងទៅ</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>ការបញ្ជូនឯកសារតាមប្រព័ន្ធ online</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>អាចចុះហត្ថលេខាជាទម្រង់ជីឌីថលបាន</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>អាចរក្សាឯកសារបានបន្តិចបន្តួច (50MB)</span>
+                </li>
+              </ul>
+              <!-- card button -->
+              <button
+                class="mt-4 h-max w-full cursor-pointer rounded-lg bg-primary py-2 text-xl text-white transition duration-200 hover:bg-primary/80"
+              >
+                ជ្រើសរើស
+              </button>
+            </div>
+            <!-- each card -->
+            <div
+              class="card relative overflow-hidden rounded-xl border border-primary/10 bg-white p-6 pt-14 text-white shadow-md transition duration-200 after:absolute after:top-0 after:left-0 after:z-40 after:h-max after:w-full after:bg-primary after:py-1 after:text-center after:text-lg after:font-bold after:content-['ពេញនិយមជាងគេ'] hover:shadow-2xl"
+            >
+              <!-- card title -->
+              <h3 class="mb-2 text-xl font-bold text-black">កម្រិតមធ្យម</h3>
+              <!-- card subtitle -->
+              <p class="line-clamp-2 text-lg font-light text-gray-600">
+                ល្អសម្រាប់សាលាដែលមានទំហំតូច និងកិច្ចការរដ្ឋបាលបន្តិចបន្តួច
+              </p>
+              <!-- card price -->
+              <h3
+                class="relative my-4 text-4xl font-bold text-black after:text-lg after:text-gray-500 after:content-['/ខែ']"
+              >
+                $10
+              </h3>
+              <!-- card detail -->
+              <ul
+                class="*:flex *:items-center *:gap-2 *:text-lg *:text-gray-600 [&>li:has(svg)_svg]:size-5 [&>li:has(svg)_svg]:text-primary"
+              >
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>Form ជាទម្រង់ឌីជីថលឥតដែនកំណត់</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>ការបញ្ជូនឯកសារតាមប្រព័ន្ធ online</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>អាចចុះហត្ថលេខាជាទម្រង់ជីឌីថលបាន</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>អាចរក្សាឯកសារបានឥតដែនកំណត់</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>អាចបញ្ចូន Email ទៅកាន់អ្នកប្រើប្រាស់ផ្សេងៗ</span>
+                </li>
+              </ul>
+              <!-- card button -->
+              <button
+                class="mt-4 h-max w-full cursor-pointer rounded-lg bg-primary py-2 text-xl text-white transition duration-200 hover:bg-primary/80"
+              >
+                ជ្រើសរើស
+              </button>
+            </div>
+            <!-- each card -->
+            <div
+              class="card rounded-xl border border-primary/10 bg-white p-6 shadow-md transition duration-200 hover:shadow-2xl"
+            >
+              <!-- card title -->
+              <h3 class="mb-2 text-xl font-bold text-black">កម្រិតអាជីវកម្ម</h3>
+              <!-- card subtitle -->
+              <p class="line-clamp-2 text-lg font-light text-gray-600">
+                ល្អសម្រាប់សាលាដែលមានទំហំធំ ឬតំបន់ភូមិសាស្ត្រណាមួយ
+              </p>
+              <!-- card price -->
+              <h3
+                class="relative my-4 text-4xl font-bold text-black after:text-lg after:text-gray-500 after:content-['/ខែ']"
+              >
+                $25
+              </h3>
+              <!-- card detail -->
+              <ul
+                class="*:flex *:items-center *:gap-2 *:text-lg *:text-gray-600 [&>li:has(svg)_svg]:size-5 [&>li:has(svg)_svg]:text-primary"
+              >
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>Form ជាទម្រង់ឌីជីថលឥតដែនកំណត់</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>ការបញ្ជូនឯកសារតាមប្រព័ន្ធ online</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>អាចចុះហត្ថលេខាជាទម្រង់ជីឌីថលបាន</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>អាចរក្សាឯកសារបានឥតដែនកំណត់</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>អាចបញ្ចូន Email ទៅកាន់អ្នកប្រើប្រាស់ផ្សេងៗ</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>មានសិទ្ធិក្នុងការប្រើប្រាស់ API</span>
+                </li>
+                <li>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.55 15.15l8.475-8.475q.3-.3.7-.3t.7.3t.3.713t-.3.712l-9.175 9.2q-.3.3-.7.3t-.7-.3L4.55 13q-.3-.3-.288-.712t.313-.713t.713-.3t.712.3z"
+                    />
+                  </svg>
+                  <span>ការ support ដែលមានអាទិភាព</span>
+                </li>
+              </ul>
+              <!-- card button -->
+              <button
+                class="mt-4 h-max w-full cursor-pointer rounded-lg bg-primary py-2 text-xl text-white transition duration-200 hover:bg-primary/80"
+              >
+                ជ្រើសរើស
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- contact section -->
+      <section id="contact" class="bg-white py-16">
+        <!-- pricing container -->
+        <div
+          class="mx-auto grid max-w-public-prefer grid-cols-1 justify-items-center gap-5 px-4 public-prefer:px-0 md:px-4"
+        >
+          <span
+            class="w-max rounded-full border border-primary/10 bg-primary/5 px-4 py-1 font-medium text-primary"
+            >ទំនាក់ទំនងមកកាន់ពួកយើង</span
+          >
+          <!-- title -->
+          <h2
+            class="text-center text-xl font-bold text-balance text-black md:text-3xl lg:w-[90%]"
+          >
+            តើអ្នកបានពិចារណារួចរាល់
+            នូវរបៀបក្នុងការរៀបចំកិច្ចការរដ្ឋបាលរបស់អ្នកហើយឬនៅ?
+          </h2>
+          <!-- subtitle -->
+          <h3 class="mb-8 text-center text-lg text-gray-600 md:text-xl">
+            អ្នកអាចទំនាក់ទំនងមកកាន់ពួកយើងឥឡូវនេះ តាមរយៈព័ត៌មានខាងក្រោមនេះ ៖
+          </h3>
+          <!-- all cards -->
+          <div
+            class="grid h-max w-full grid-cols-1 gap-4 md:grid-cols-[1fr_1.65fr] md:gap-6 lg:gap-8"
+          >
+            <!-- left side -->
+            <div class="mx-auto flex flex-col gap-4 md:mx-0">
+              <!-- card title -->
+              <h3 class="text-2xl font-bold text-black/80">
+                ព័ត៌មានសម្រាប់ទំនាក់ទំនង
+              </h3>
+              <!-- small contact card -->
+              <div class="flex flex-row items-start gap-2">
+                <!-- card icon -->
+                <div class="shrink-0 *:size-6 *:text-primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zM20 8l-7.475 4.675q-.125.075-.262.113t-.263.037t-.262-.037t-.263-.113L4 8v10h16zm-8 3l8-5H4zM4 8v.25v-1.475v.025V6v.8v-.012V8.25zv10z"
+                    />
+                  </svg>
+                </div>
+                <!-- card info -->
+                <div class="flex flex-col gap-1">
+                  <h4 class="text-lg leading-tight text-black">តាមរយៈ Email</h4>
+                  <a
+                    href="mailto:limvichet917@gmail.com"
+                    class="text-lg font-normal text-gray-600"
+                    >limvichet917@gmail.com</a
+                  >
+                </div>
+              </div>
+              <!-- small contact card -->
+              <div class="flex flex-row items-start gap-2">
+                <!-- card icon -->
+                <div class="shrink-0 *:size-6 *:text-primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M19.95 21q-3.225 0-6.287-1.438t-5.425-3.8q-2.363-2.362-3.8-5.425T3 4.05q0-.45.3-.75t.75-.3H8.1q.35 0 .625.225t.325.575l.65 3.5q.05.35-.013.638T9.4 8.45L6.975 10.9q1.05 1.8 2.638 3.375T13.1 17l2.35-2.35q.225-.225.588-.338t.712-.062l3.45.7q.35.075.575.338T21 15.9v4.05q0 .45-.3.75t-.75.3ZM6.025 9l1.65-1.65L7.25 5H5.025q.125 1.025.35 2.025T6.025 9ZM19 18.95v-2.2l-2.35-.475l-1.675 1.675q.975.425 1.987.675T19 18.95Zm-4-1.025ZM6.025 9Z"
+                    />
+                  </svg>
+                </div>
+                <!-- card info -->
+                <div class="flex flex-col gap-1">
+                  <h4 class="text-lg leading-tight text-black">
+                    តាមរយៈលេខទូរសព្ទ
+                  </h4>
+                  <a
+                    href="tel:012856917"
+                    class="text-lg font-normal text-gray-600"
+                    >(855) 12 856 917</a
+                  >
+                </div>
+              </div>
+              <!-- small contact card -->
+              <div class="flex flex-row items-start gap-2">
+                <!-- card icon -->
+                <div class="shrink-0 *:size-6 *:text-primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 12q.825 0 1.413-.587T14 10t-.587-1.412T12 8t-1.412.588T10 10t.588 1.413T12 12m0 7.35q3.05-2.8 4.525-5.087T18 10.2q0-2.725-1.737-4.462T12 4T7.738 5.738T6 10.2q0 1.775 1.475 4.063T12 19.35M12 22q-4.025-3.425-6.012-6.362T4 10.2q0-3.75 2.413-5.975T12 2t5.588 2.225T20 10.2q0 2.5-1.987 5.438T12 22m0-12"
+                    />
+                  </svg>
+                </div>
+                <!-- card info -->
+                <div class="flex flex-col gap-1">
+                  <h4 class="text-lg leading-tight text-black">
+                    តាមរយៈអាសយដ្ឋាន
+                  </h4>
+                  <a href="" class="text-lg font-normal text-gray-600"
+                    >ផ្ទះលេខ123, <br />
+                    សង្កាត់ភ្នំពេញថ្មី, <br />ខណ្ឌដង្កោ, <br />
+                    រាជធានីភ្នំពេញ</a
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- right side -->
+            <div
+              class="bg-light rounded-xl border border-primary/10 p-4 shadow md:p-6 lg:p-8"
+            >
+              <!-- form title -->
+              <h3
+                class="mb-4 text-center text-2xl font-bold text-black/80 md:mb-6 md:text-left"
+              >
+                ផ្ញើសារមកកាន់ពួកយើង
+              </h3>
+              <!-- form body -->
+              <form
+                class="m-0 grid h-max w-full grid-cols-1 gap-4 p-0 lg:grid-cols-2 lg:gap-6 [&_*:is(input,textarea)]:outline-2 [&_*:is(input,textarea)]:outline-primary/20 [&_label]:text-zinc-900"
+              >
+                <!-- form row -->
+                <div
+                  class="input-row col-span-2 flex flex-col gap-1 lg:col-span-1"
+                >
+                  <label for="name" class="text-lg">ឈ្មោះរបស់អ្នក</label>
+                  <input
+                    class="rounded-lg border border-primary/10 bg-white px-3 py-2 text-lg text-black focus:outline-primary dark:focus:outline-primary"
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="ឧ. ស៊ឺ សាមីត"
+                    required
+                  />
+                </div>
+                <!-- form row -->
+                <div
+                  class="input-row col-span-2 flex flex-col gap-1 lg:col-span-1"
+                >
+                  <label for="email" class="text-lg">Email របស់អ្នក</label>
+                  <input
+                    class="rounded-lg border border-primary/10 bg-white px-3 py-2 text-lg text-black focus:outline-primary dark:focus:outline-primary"
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="ឧ. seusamith@gmail.com"
+                    required
+                  />
+                </div>
+                <!-- form row -->
+                <div class="input-row col-span-2 flex flex-col gap-1">
+                  <label for="school" class="text-lg">សាលារបស់អ្នក</label>
+                  <input
+                    class="rounded-lg border border-primary/10 bg-white px-3 py-2 text-lg text-black focus:outline-primary dark:focus:outline-primary"
+                    type="text"
+                    name="school"
+                    id="school"
+                    placeholder="ឧ. វិទ្យាល័យកំពង់ស្ពឺ"
+                    required
+                  />
+                </div>
+                <!-- form row -->
+                <div class="input-row col-span-2 flex flex-col gap-1">
+                  <label for="message" class="text-lg">អត្ថបទសារ</label>
+                  <textarea
+                    class="min-h-28 resize-y rounded-lg border border-primary/10 bg-white px-3 py-2 text-lg text-black focus:outline-primary dark:focus:outline-primary"
+                    name="message"
+                    id="message"
+                    placeholder="ឧ. ប្រាប់ពួកយើងអំពីអ្វីដែលអ្នកត្រូវការ..."
+                    required
+                  ></textarea>
+                </div>
+                <!-- form row -->
+                <div class="input-row col-span-2 flex flex-col gap-1">
+                  <button
+                    class="cursor-pointer rounded-lg border border-primary/10 bg-primary px-3 py-2 text-lg font-bold text-white transition duration-200 hover:bg-primary/80 focus:outline-primary dark:focus:outline-primary"
+                  >
+                    ផ្ញើសារ
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- footer section -->
+      <footer class="bg-zinc-900 py-8">
+        <div
+          class="mx-auto flex max-w-public-prefer flex-col items-center gap-4 px-4 public-prefer:px-0 md:flex-row md:justify-between md:px-4"
+        >
+          <h3 class="text-white">
+            &copy; 2025 រក្សាសិទ្ធិគ្រប់យ៉ាងដោយ
+            <span class="text-primary">1EZ</span>.
+          </h3>
+          <ul
+            class="flex items-center gap-4 text-white *:duration-200 *:hover:text-primary md:gap-6"
+          >
+            <li><a href="#features">លក្ខណៈពិសេស</a></li>
+            <li><a href="#testimonials">ការគាំទ្រ</a></li>
+            <li><a href="#pricing">តម្លៃ</a></li>
+            <li><a href="#contact">ទំនាក់ទំនង</a></li>
+          </ul>
+        </div>
+      </footer>
+    </main>
 
-        @if (Route::has('login'))
-            <div class="h-14.5 hidden lg:block"></div>
-        @endif
-    </body>
+  </body>
 </html>

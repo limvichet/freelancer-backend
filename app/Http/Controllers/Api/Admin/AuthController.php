@@ -36,7 +36,7 @@ class AuthController extends Controller
         ]);
 
         // 🔹 Send email verification link
-        $user->sendEmailVerificationNotification();
+        // $user->sendEmailVerificationNotification();
 
         $token = $user->createToken('authToken')->plainTextToken;
 
@@ -179,7 +179,7 @@ class AuthController extends Controller
             ], 404);
         }
 
-        $resetRequest = PasswordReset::where('email', $user->email)->first(); 
+        $resetRequest = PasswordReset::where('email', $user->email)->first();
         if(!$resetRequest || $resetRequest->token != $request->token || $resetRequest->expires_at->isPast()){
             return response()->json([
                 'message' => 'An error occured, Please try again, token mismatch',
@@ -243,7 +243,27 @@ class AuthController extends Controller
         ]);
     }
 
-    
+    public function updateLocationCode(Request $request)
+    {
+        // Validate incoming data
+        $request->validate([
+            'location_code' => 'required|string|max:11',
+        ]);
+
+        // Current logged-in user
+        $user = $request->user();
+
+        // Update location code
+        $user->location_code = $request->location_code;
+        $user->save();
+
+        return response()->json([
+            'message' => 'Location code updated successfully',
+            'code'    => config('constants.codes.success'),
+            'user'    => $user,
+        ]);
+    }
+
 }
 
 

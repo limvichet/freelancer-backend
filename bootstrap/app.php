@@ -14,6 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
          $middleware->append(\App\Http\Middleware\LogApiRequests::class);
     })
+    ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->alias([
+            'check.token.expiration' => \App\Http\Middleware\CheckTokenExpiration::class,
+        ]);
+    })
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
